@@ -1,15 +1,23 @@
 import './App.css';
 //import Button from 'react-bootstrap/Button';
-import { Container, Row, Col, Button, Alert, Breadcrumb, Card, Form } from 'react-bootstrap';
+import {Card, Container} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import NavBar from './NavBar';
+import { BrowserRouter } from 'react-router-dom';
+import Footer from './Footer';
 
 
 function App() {
   return (
-    <div className="App">
+    <BrowserRouter>
+      <div className="App">
       <NavBar/>
-    </div>
+      <Container>
+        <Card/>
+      </Container>
+      <Footer/>
+      </div>
+    </BrowserRouter>
 
   );
 }
