@@ -4,10 +4,11 @@ import githubSVG from "./SVG/githubSVG.svg";
 import LinkedIn from "./SVG/LinkedIn.svg";
 import emailSVG from "./SVG/Email.svg";
 import { Link } from 'react-router-dom';
+import './NavBar.css';
 
 const NavBar = props => {
     return (
-        <Navbar bg="dark" variant='dark' expand="md">
+        <Navbar bg="dark" variant='dark' expand="md" className='header'>
         <Container>
           <Navbar.Brand href="/home">Eric Straw</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
