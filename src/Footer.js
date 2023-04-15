@@ -1,7 +1,8 @@
 import React from 'react';
 import { Container, Row, Col, Button } from 'react-bootstrap';
-import githubSVG from "./githubSVG.svg";
-import emailSVG from "./Email.svg";
+import githubSVG from "./SVG/githubSVG.svg";
+import emailSVG from "./SVG/Email.svg";
+import LinkdenIn from "./SVG/LinkedIn.svg";
 import './Footer.css';
 const Footer = () => {
     return (
@@ -19,6 +20,9 @@ const Footer = () => {
                     </Button>
                     <Button className='bg-dark icon' style={{ outline: 'none !important' }} href="https://github.com/estraw1059" target="_blank">
                         <img src={githubSVG} alt="github" />
+                    </Button>
+                    <Button className='bg-dark icon' style={{ outline: 'none !important' }} href="https://www.linkedin.com/in/eric-straw-477739102" target="_blank">
+                        <img src={LinkdenIn} alt="LinkdenIn" />
                     </Button>
                 </div>
             </Col>

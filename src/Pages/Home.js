@@ -1,6 +1,6 @@
 import React from 'react';
 import BlogPostCard from '../BlogPostCard';
-import underConstructionSVG from '../underConstructionSVG.svg';
+import underConstructionSVG from '../SVG/underConstructionSVG.svg';
 import ConstructionSite from '../ConstructionSite';
 import {Container} from 'react-bootstrap';
 

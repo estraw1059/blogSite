@@ -1,6 +1,8 @@
 import React from 'react';
-import {Container, Nav, Navbar, NavDropdown} from 'react-bootstrap';
-import githubSVG from "./githubSVG.svg";
+import {Container, Nav, Navbar} from 'react-bootstrap';
+import githubSVG from "./SVG/githubSVG.svg";
+import LinkedIn from "./SVG/LinkedIn.svg";
+import emailSVG from "./SVG/Email.svg";
 import { Link } from 'react-router-dom';
 
 const NavBar = props => {
@@ -17,7 +19,13 @@ const NavBar = props => {
             </Nav>
             <Nav className='ml-auto'>
                 <Nav.Link href="https://github.com/estraw1059" target="_blank">
-                    <img src={githubSVG} alt="github" />
+                  <img src={githubSVG} alt="github" />
+                </Nav.Link>
+                <Nav.Link href="https://www.linkedin.com/in/eric-straw-477739102" target="_blank">
+                  <img src={LinkedIn} alt="LinkedIn"/>
+                </Nav.Link>
+                <Nav.Link href='mailto:estraw@smu.edu'>
+                  <img src={emailSVG} alt="Email Me"/>
                 </Nav.Link>
             </Nav>
           </Navbar.Collapse>
