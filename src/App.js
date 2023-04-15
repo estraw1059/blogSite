@@ -1,20 +1,23 @@
 import './App.css';
 //import Button from 'react-bootstrap/Button';
-import {Card, Container} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import NavBar from './NavBar';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Footer from './Footer';
-
+import Home from './Pages/Home';
+import Blog from './Pages/Blog';
+import AboutMe from './Pages/AboutMe';
 
 function App() {
   return (
     <BrowserRouter>
       <div className="App">
       <NavBar/>
-      <Container>
-        <Card/>
-      </Container>
+      <Routes>
+        <Route path="home" element={<Home />}/>
+        <Route path="blog" element={<Blog />}/>
+        <Route path="aboutMe" element={<AboutMe />}/>
+      </Routes>
       <Footer/>
       </div>
     </BrowserRouter>

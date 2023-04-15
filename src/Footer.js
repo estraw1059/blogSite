@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Container, Row, Col, Button } from 'react-bootstrap';
 import githubSVG from "./githubSVG.svg";
 import emailSVG from "./Email.svg";
 import './Footer.css';
@@ -14,12 +14,12 @@ const Footer = () => {
         <Row>
             <Col>
                 <div className='iconContainer'>
-                    <div className='icon' href='mailto:estraw@smu.edu'>
+                    <Button className='icon' style={{ outline: 'none' }} href='mailto:estraw@smu.edu'>
                         <img src={emailSVG} alt="email me" />
-                    </div>
-                    <div className='icon' href="https://github.com/estraw1059" target="_blank">
+                    </Button>
+                    <Button className='bg-dark icon' style={{ outline: 'none !important' }} href="https://github.com/estraw1059" target="_blank">
                         <img src={githubSVG} alt="github" />
-                    </div>
+                    </Button>
                 </div>
             </Col>
         </Row>
