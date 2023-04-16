@@ -7,7 +7,6 @@
 
 .mainContent {
   flex: 1 1 auto;
-  overflow: scroll;
 }
 
 body > #root > div {

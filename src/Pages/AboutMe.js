@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
+import { Container, Row } from 'react-bootstrap';
 import Skill from '../Components/Skill/Skill';
 import db from '../Firebase';
 import { onSnapshot, collection } from 'firebase/firestore';
+import '../Components/SkillGroup/SkillGroup.css';
 
 const AboutMe = () => {
     const [skills, setSkills] = useState([]);
@@ -12,13 +14,13 @@ const AboutMe = () => {
         }), []);
 
     return (
-        <div>
-            This is a page about me. I should put my resume here
-
-            {skills.map((skill) => {
-                return <Skill skillName={skill.skill} skillPercent={skill.skillPercent}/>
-            })}
-        </div>
+        <Container>
+            <Row>
+                {skills.map((skill) => {
+                    return <Skill skillName={skill.skill} skillPercent={skill.skillPercent}/>
+                })}
+            </Row>
+        </Container>
     );
 };
 
