@@ -3,7 +3,7 @@ import { Container, Row } from 'react-bootstrap';
 import Skill from '../Components/Skill/Skill';
 import db from '../Firebase';
 import { onSnapshot, collection } from 'firebase/firestore';
-import '../Components/SkillGroup/SkillGroup.css';
+import Profile from '../Components/Profile/Profile';
 
 const AboutMe = () => {
     const [skills, setSkills] = useState([]);
@@ -14,13 +14,16 @@ const AboutMe = () => {
         }), []);
 
     return (
-        <Container>
-            <Row>
-                {skills.map((skill) => {
-                    return <Skill skillName={skill.skill} skillPercent={skill.skillPercent}/>
-                })}
-            </Row>
-        </Container>
+        <div>
+            <Profile/>
+            <Container>
+                <Row>
+                    {skills.map((skill) => {
+                        return <Skill skillName={skill.skill} skillPercent={skill.skillPercent}/>
+                    })}
+                </Row>
+            </Container>
+        </div>
     );
 };
 

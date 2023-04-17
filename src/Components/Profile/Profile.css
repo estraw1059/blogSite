@@ -1,0 +1,10 @@
+.page {
+    box-sizing: border-box;
+    height: 100%;
+    margin: 30px;
+    padding: 15px;
+}
+
+.profileImage {
+    border-radius: 50%;
+}
