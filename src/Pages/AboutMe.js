@@ -4,6 +4,7 @@ import Skill from '../Components/Skill/Skill';
 import db from '../Firebase';
 import { onSnapshot, collection } from 'firebase/firestore';
 import Profile from '../Components/Profile/Profile';
+import WorkExperience from '../Components/WorkExperience/WorkExperience';
 
 const AboutMe = () => {
     const [skills, setSkills] = useState([]);
@@ -14,8 +15,9 @@ const AboutMe = () => {
         }), []);
 
     return (
-        <div>
+        <Container>
             <Profile/>
+            <WorkExperience/>
             <Container>
                 <Row>
                     {skills.map((skill) => {
@@ -23,7 +25,7 @@ const AboutMe = () => {
                     })}
                 </Row>
             </Container>
-        </div>
+        </Container>
     );
 };
 
