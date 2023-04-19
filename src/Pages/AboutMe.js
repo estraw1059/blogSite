@@ -9,10 +9,11 @@ import WorkExperience from '../Components/WorkExperience/WorkExperience';
 const AboutMe = () => {
     const [skills, setSkills] = useState([]);
     useEffect(
-        () =>
+        () => 
         onSnapshot(collection(db, 'skills'), (snapshot) => {
             setSkills(snapshot.docs.map(doc => doc.data()));
         }), []);
+    
 
     return (
         <Container>
