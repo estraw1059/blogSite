@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import db from '../../Firebase';
 import { onSnapshot, collection } from 'firebase/firestore';
-import { Card, Tab, Tabs } from 'react-bootstrap';
-import Job from './Job';
+import { Card, Tab, Tabs, Row } from 'react-bootstrap';
+import Job from '../Job/Job';
 import './WorkExperience.css';
 
 const WorkExperience = (props) => {
@@ -15,6 +15,9 @@ const WorkExperience = (props) => {
         }), []);
     return (
         <Card className='WorkSizing'>
+            <Row className="header">
+                <h1>Work Experience</h1>
+            </Row>
             <Tabs
                 id="work-experience"
                 activeKey={key}

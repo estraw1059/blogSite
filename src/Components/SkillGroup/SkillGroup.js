@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import Skill from '../Skill/Skill';
-import { Container, Row } from 'react-bootstrap';
+import { Container, Row, Card } from 'react-bootstrap';
 import db from '../../Firebase';
 import { onSnapshot, collection } from 'firebase/firestore';
+import './SkillGroup.css';
 
 const SkillGroup = () => {
 
@@ -16,11 +17,16 @@ const SkillGroup = () => {
 
     return (
         <Container>
-            <Row>
-                {skills.map((skill, index) => {
-                    return <Skill skillName={skill.skill} skillPercent={skill.skillPercent} key={index}/>
-                })}
-            </Row>
+            <Card>
+                <Row className="header">
+                    <h1>Skills</h1>
+                </Row>
+                <Row>
+                    {skills.map((skill, index) => {
+                        return <Skill skillName={skill.skill} skillPercent={skill.skillPercent} key={index}/>
+                    })}
+                </Row>
+            </Card>
         </Container>
     );
 };
