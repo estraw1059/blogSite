@@ -10,7 +10,7 @@ type SkillProps  = {
 
 const Skill = (props: SkillProps) => {
     return (
-    <Col xs={12}>
+    <Col xs={12} lg={6} xl={4}> 
 		<div className='skills'>
 			<div className="skill">
 				<div className="skill-name">{props.skillName}</div>

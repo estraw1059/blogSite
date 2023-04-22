@@ -16,7 +16,7 @@ const SkillGroup = () => {
 
 
     return (
-        <Container>
+        <Container className="skillSizing">
             <Card>
                 <Row className="header">
                     <h1>Skills</h1>
