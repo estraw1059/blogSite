@@ -11,14 +11,14 @@ const ProjectCard = ({projectName, projectCodeLink, projectWebLink, projectDesc}
                 <Row>
                     <Col xs={6}>
                         <a href={projectCodeLink} target="_blank">
-                            <Button variant="primary" className="rounded-pill" style={{ width: '100%' }}>
+                            <Button variant="dark" className="rounded-pill" style={{ width: '100%' }}>
                                 &lt;/&gt;
                             </Button>
                         </a>
                     </Col>
                     <Col xs={6}>
                         <a href={projectWebLink} target="_blank">
-                            <Button variant="primary" className="rounded-pill" style={{ width: '100%' }}>
+                            <Button variant="dark" className="rounded-pill" style={{ width: '100%' }}>
                                 www
                             </Button>
                         </a>
