@@ -1,5 +1,6 @@
 import React from 'react';
 import { Card } from 'react-bootstrap';
+import './Job.css';
 
 const Job = ({company, title, dates, description, logo}) => {
     //Todo add background photo of company
@@ -8,12 +9,14 @@ const Job = ({company, title, dates, description, logo}) => {
             <Card.Header>{company}</Card.Header>
             <Card.Body>
                 <Card.Title>{title}</Card.Title>
-                <Card.Subtitle className="mb-2 text-muted">{dates}</Card.Subtitle>
-                <ul>
-                    {description.map((role, index) => (
-                        <li key={index}>{role}</li>
-                    ))}
-                 </ul>
+                <Card.Subtitle>{dates}</Card.Subtitle>
+                <Card.Text>
+                    <ul>
+                        {description.map((role, index) => (
+                            <li key={index}>{role}</li>
+                        ))}
+                    </ul>
+                </Card.Text>
             </Card.Body>
         </Card>
     );

@@ -29,7 +29,7 @@ const WorkExperience = (props) => {
                     <Tab eventKey="current" title="Current Work">
                         {workExp.map((skill, index) => {
                             if (skill.isCurrent) {
-                                return <Job company={skill.company} title={skill.title} dates={skill.date} description={skill.details} logo={skill.logo} key={index}/>
+                                return <Job company={skill.company} title={skill.title} dates={skill.dates} description={skill.details} logo={skill.logo} key={index}/>
                             }
                             return <></>;
                         })}
