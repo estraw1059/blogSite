@@ -1,0 +1,15 @@
+.selectedPill {
+    background-color: #212529;
+    color: #fff;
+    border-color: #212529;
+}
+
+.unselectedPill {
+    background-color: #fff;
+    color: #212529;
+    border-color: #212529;
+}
+
+.pill {
+    width: 100px;
+}
