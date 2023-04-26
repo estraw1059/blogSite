@@ -2,28 +2,38 @@ import './App.css';
 //import Button from 'react-bootstrap/Button';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import NavBar from './NavBar';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Router, Routes, Route, useRoutes } from 'react-router-dom';
 import Footer from './Footer';
 import Home from './Pages/Home';
 import Blog from './Pages/Blog';
 import AboutMe from './Pages/AboutMe';
 
 function App() {
+  let element = useRoutes([
+    {
+      path: "/",
+      element: <Home/>
+    }, 
+    {
+      path: "/aboutMe",
+      element: <AboutMe/>
+    }
+  ])
+
+
   return (
-    <BrowserRouter>
       <div className="App">
       <NavBar/>
       <div className="mainContent">
-        <Routes>
-          <Route path="home" element={<Home />}/>
+        {/* <Routes>
+          <Route path={["/home", ""]} element={<Home />}/>
           <Route path="blog" element={<Blog />}/>
           <Route path="aboutMe" element={<AboutMe />}/>
-        </Routes>
+        </Routes> */}
+        {element}
       </div>
       <Footer/>
       </div>
-    </BrowserRouter>
-
   );
 }
 
