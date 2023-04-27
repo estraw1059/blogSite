@@ -15,8 +15,16 @@ function App() {
       element: <Home/>
     }, 
     {
+      path: "/home",
+      element: <Home/>
+    },
+    {
       path: "/aboutMe",
       element: <AboutMe/>
+    },
+    {
+      path: "/blog",
+      element: <Blog/>
     }
   ])
 

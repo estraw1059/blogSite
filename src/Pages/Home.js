@@ -1,14 +1,14 @@
+/* eslint-disable-next-line */
 import React from 'react';
 import BlogPostCard from '../BlogPostCard';
-import underConstructionSVG from '../SVG/underConstructionSVG.svg';
 import ConstructionSite from '../ConstructionSite';
-import {Container} from 'react-bootstrap';
+import {Container, Image} from 'react-bootstrap';
 
 const Home = () => {
     return (
         <div>
             <ConstructionSite/>
-            <img src={underConstructionSVG} alt="github" />
+                <Image src="https://img.icons8.com/officel/80/null/under-construction.png" fluid/>
             <Container>
                 <BlogPostCard title ="Example Title" text="A very basic description of my Blog Post"/>
             </Container>
