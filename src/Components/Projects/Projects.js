@@ -8,15 +8,24 @@ import FilterButton from '../FilterButton/FilterButton';
 
 const Projects = () => {
     const [projects, setProjects] = useState([]);
-    const [filter, setFilter] = useState([]);
-    useEffect(
-        () => 
-        onSnapshot(collection(db, 'projects'), (snapshot) => {
-            setProjects(snapshot.docs.map(doc => doc.data()));
-        }), []);
+    const [filters, setFilter] = useState([]);
+
+    useEffect(() => {
+        const fetchData = async() => {
+            const projectSnapshot = onSnapshot(collection(db, 'projects'), (snapshot) => {
+                setProjects(snapshot.docs.map(doc => doc.data()));
+            });
+            const filterSnapshot = onSnapshot(collection(db, 'projectFilters'), (snapshot) => {
+                setFilter(snapshot.docs.map(doc => doc.data()));
+            });
+            return [projectSnapshot, filterSnapshot];
+        }
+        
+        fetchData();
+
+        }, []);
     
     const handleFilterChange = (newFilter) => {
-        setFilter([newFilter]);
     }
 
     return (
@@ -26,9 +35,20 @@ const Projects = () => {
                     <h1>Projects</h1>
                 </Row>
                 <Row>
-                    <Col>
-                        <FilterButton field="C++" onClick={() => handleFilterChange("C++")}/>
-                    </Col>
+                        {filters.map((filter, index) => {
+                            console.log(filter.filter);
+                            return (
+                                <Col>
+                                    <FilterButton field={filter.filter} onClick={() => handleFilterChange("Java")}/>
+                                </Col>
+                            )
+                        })}
+                        {/* <Col>
+                         <FilterButton field="Java" onClick={() => handleFilterChange("Java")}/>
+                        </Col>
+                        <Col>
+                         <FilterButton field="C++" onClick={() => handleFilterChange("Java")}/>
+                        </Col> */}
                 </Row>
                 <Row>
                     {projects.map((project, index) => {
