@@ -8,7 +8,7 @@ const UnderConstruction = () => {
     <div className="under-construction">
       <Image src="https://img.icons8.com/officel/80/null/under-construction.png" fluid/>
       <h2>Site Under Construction</h2>
-      <p>We're sorry, this site is currently under construction. Please check back later!</p>
+      <p>We're sorry, this page is currently under construction. Please check back later!</p>
     </div>
   );
 };
