@@ -1,12 +1,12 @@
 import React from 'react';
-import { Container, Row, Col, Button } from 'react-bootstrap';
+import { Row, Col, Button } from 'react-bootstrap';
 import githubSVG from "./SVG/githubSVG.svg";
 import emailSVG from "./SVG/Email.svg";
 import LinkdenIn from "./SVG/LinkedIn.svg";
-import './Footer.css';
-const Footer = () => {
+import './WebsiteFooter.css';
+const WebsiteFooter = () => {
     return (
-        <Container fluid className="bg-dark text-light">
+        <footer fluid className="bg-dark text-light footer fixed-bottom">
         <Row>
             <Col className="text-center py-3">
                 Created By Eric Straw
@@ -27,8 +27,8 @@ const Footer = () => {
                 </div>
             </Col>
         </Row>
-      </Container>
+      </footer>
     );
 };
 
-export default Footer;
+export default WebsiteFooter;
