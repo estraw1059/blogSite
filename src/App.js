@@ -3,7 +3,7 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import NavBar from './NavBar';
 import { useRoutes } from 'react-router-dom';
-import Footer from './Footer';
+import WebsiteFooter from './WebsiteFooter';
 import Home from './Pages/Home';
 import Blog from './Pages/Blog';
 import AboutMe from './Pages/AboutMe';
@@ -31,11 +31,11 @@ function App() {
 
   return (
       <div className="App">
-      <NavBar/>
-      <div className="mainContent">
-        {element}
-      </div>
-      <Footer/>
+        <NavBar/>
+        <div className="mainContent">
+          {element}
+        </div>
+        <WebsiteFooter/>
       </div>
   );
 }
