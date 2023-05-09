@@ -5,6 +5,7 @@ import './Project.css';
 import db from '../../Firebase';
 import { onSnapshot, collection, doc } from 'firebase/firestore';
 import FilterButton from '../FilterButton/FilterButton';
+import { checkTargetForNewValues } from 'framer-motion';
 
 const Projects = () => {
     const [projects, setProjects] = useState([]);
@@ -16,7 +17,9 @@ const Projects = () => {
                 setProjects(snapshot.docs.map(doc => doc.data()));
             });
             const filterSnapshot = onSnapshot(collection(db, 'projectFilters'), (snapshot) => {
-                var filters = {};
+                var filters = {
+                    all: true
+                };
                 setFilter(snapshot.docs.map(doc => {
                     const data = doc.data()
                     const filterName = data.filter;
@@ -36,13 +39,40 @@ const Projects = () => {
 
         }, []);
     
+    const setAll = (newFilter, currentFilter) => {
+        if (!currentFilter[newFilter]) {
+            return {
+                ...currentFilter,
+                all: false
+            }
+        }
+        //We need to go through all objects and see if they are all false
+        let all = true;
+        for(const key in currentFilter) {
+            if(key === 'all' || key === newFilter) {
+                continue;
+            }
+            if(currentFilter[key]) {
+                all = false;
+                break;
+            }
+        }
+        return {
+            ...currentFilter,
+            all: all
+        }
+    }
+
     const handleFilterChange = (newFilter) => {
         setFilterState(currentFilter => {
-            return {
+            currentFilter = setAll(newFilter, currentFilter);
+            const updatedFilter = {
                 ...currentFilter,
                 [newFilter]: !currentFilter[newFilter]
     
             }
+            console.log(updatedFilter);
+            return updatedFilter;
         });
     }
 
