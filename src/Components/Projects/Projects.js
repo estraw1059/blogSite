@@ -3,20 +3,31 @@ import {Card, Container, Row, Col, Button} from 'react-bootstrap';
 import ProjectCard from '../ProjectCard/ProjectCard';
 import './Project.css';
 import db from '../../Firebase';
-import { onSnapshot, collection } from 'firebase/firestore';
+import { onSnapshot, collection, doc } from 'firebase/firestore';
 import FilterButton from '../FilterButton/FilterButton';
 
 const Projects = () => {
     const [projects, setProjects] = useState([]);
     const [filters, setFilter] = useState([]);
-
+    const [filterState, setFilterState] = useState({});
     useEffect(() => {
         const fetchData = async() => {
             const projectSnapshot = onSnapshot(collection(db, 'projects'), (snapshot) => {
                 setProjects(snapshot.docs.map(doc => doc.data()));
             });
             const filterSnapshot = onSnapshot(collection(db, 'projectFilters'), (snapshot) => {
-                setFilter(snapshot.docs.map(doc => doc.data()));
+                var filters = {};
+                setFilter(snapshot.docs.map(doc => {
+                    const data = doc.data()
+                    const filterName = data.filter;
+                    filters = {
+                        ...filters,
+                        [filterName]: false
+                    }
+                    filters[filterName] = false;
+                    return data;
+                }));
+                setFilterState(filters);
             });
             return [projectSnapshot, filterSnapshot];
         }
@@ -26,6 +37,13 @@ const Projects = () => {
         }, []);
     
     const handleFilterChange = (newFilter) => {
+        setFilterState(currentFilter => {
+            return {
+                ...currentFilter,
+                [newFilter]: !currentFilter[newFilter]
+    
+            }
+        });
     }
 
     return (
@@ -36,23 +54,16 @@ const Projects = () => {
                 </Row>
                 <Row>
                         {filters.map((filter, index) => {
-                            console.log(filter.filter);
                             return (
                                 <Col>
-                                    <FilterButton field={filter.filter} onClick={() => handleFilterChange("Java")}/>
+                                    <FilterButton key={index} field={filter.filter} onClick={() => handleFilterChange(filter.filter)}/>
                                 </Col>
                             )
                         })}
-                        {/* <Col>
-                         <FilterButton field="Java" onClick={() => handleFilterChange("Java")}/>
-                        </Col>
-                        <Col>
-                         <FilterButton field="C++" onClick={() => handleFilterChange("Java")}/>
-                        </Col> */}
                 </Row>
                 <Row>
                     {projects.map((project, index) => {
-                        return <ProjectCard projectName={project.projectName} projectDesc={project.projectDesc} projectWebLink={project.projectWebLink} projectCodeLink={project.projectCodeLink}/>
+                        return <ProjectCard key={index} projectName={project.projectName} projectDesc={project.projectDesc} projectWebLink={project.projectWebLink} projectCodeLink={project.projectCodeLink}/>
                     })}
                 </Row>
             </Card>
