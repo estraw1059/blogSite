@@ -71,14 +71,13 @@ const Projects = () => {
                 [newFilter]: !currentFilter[newFilter]
     
             }
-            console.log(updatedFilter);
             return updatedFilter;
         });
     }
 
     return (
         <Container className="projectSpacing">
-            <Card>
+            <Card className="cardSpacing">
                 <Row className='header'>
                     <h1>Projects</h1>
                 </Row>
@@ -93,7 +92,12 @@ const Projects = () => {
                 </Row>
                 <Row>
                     {projects.map((project, index) => {
-                        return <ProjectCard key={index} projectName={project.projectName} projectDesc={project.projectDesc} projectWebLink={project.projectWebLink} projectCodeLink={project.projectCodeLink}/>
+                        for(let i = 0; i < project.filterFields.length; i++) {
+                            if (filterState['all'] || filterState[project.filterFields[i]]) {
+                                return <ProjectCard key={index} projectName={project.projectName} projectDesc={project.projectDesc} projectWebLink={project.projectWebLink} projectCodeLink={project.projectCodeLink}/>
+                            }
+                        }
+                        return;
                     })}
                 </Row>
             </Card>
