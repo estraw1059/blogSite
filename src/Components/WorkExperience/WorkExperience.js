@@ -23,6 +23,7 @@ const WorkExperience = (props) => {
                     id="work-experience"
                     activeKey={key}
                     onSelect={(k) => setKey(k)}
+                    className='tab'
                     justify
                     fill
                 >
