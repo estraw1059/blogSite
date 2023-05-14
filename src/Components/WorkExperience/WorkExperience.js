@@ -5,7 +5,7 @@ import { Card, Tab, Tabs, Row, Container } from 'react-bootstrap';
 import Job from '../Job/Job';
 import './WorkExperience.css';
 
-const WorkExperience = (props) => {
+const WorkExperience = () => {
     const [key, setKey] = useState('current');
     const [workExp, setWorkExp] = useState([]);
     useEffect(
