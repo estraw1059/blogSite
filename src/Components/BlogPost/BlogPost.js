@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import { Container, Card } from 'react-bootstrap';
 import db from '../../Firebase';
+import { doc, getDoc} from 'firebase/firestore';
 import { useParams } from 'react-router-dom';
 
 function BlogPost() {
@@ -9,16 +10,13 @@ function BlogPost() {
     useEffect(() => {
         const getDocumentById = async () => {
             try {
-                const docRef = db.collection('blogPost').doc(id);
-                const documentSnapshot = await docRef.get();
+                console.log("Getting Doc");
+                const docRef = doc(db, 'blogPost', id);
+                getDoc(docRef).then((doc) => {
+                    console.log(doc.data(), doc.id);
+                    setBlogData(doc.data());
+                });
 
-                if (documentSnapshot.exists) {
-                    const data = documentSnapshot.data();
-                    setBlogData(data);
-                } else {
-                    console.log('Document not found');
-                    setBlogData(null);
-                }
             } catch (error) {
                 console.error('Error getting blog post', error);
                 setBlogData(null);
