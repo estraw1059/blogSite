@@ -3,9 +3,8 @@ import {Card, Container, Row, Col, Button} from 'react-bootstrap';
 import ProjectCard from '../ProjectCard/ProjectCard';
 import './Project.css';
 import db from '../../Firebase';
-import { onSnapshot, collection, doc } from 'firebase/firestore';
+import { onSnapshot, collection} from 'firebase/firestore';
 import FilterButton from '../FilterButton/FilterButton';
-import { checkTargetForNewValues } from 'framer-motion';
 
 const Projects = () => {
     const [projects, setProjects] = useState([]);

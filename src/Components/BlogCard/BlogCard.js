@@ -5,6 +5,7 @@ import { Card } from 'react-bootstrap';
 //Single Blog Card
 const BlogCard = (props) => {
     const {blog} = props;
+    console.log(blog);
     const navigate = useNavigate();
 
     const handleClick = () => {
@@ -17,7 +18,7 @@ const BlogCard = (props) => {
         <Card.Body>
           <Card.Title>{blog.title}</Card.Title>
           <Card.Text>{blog.summary}</Card.Text>
-          <Card.Subtitle className="text-muted">Date Posted: {blog.datePosted}</Card.Subtitle>
+          {/* <Card.Subtitle className="text-muted">Date Posted: {blog.datePosted}</Card.Subtitle> */}
         </Card.Body>
       </Card>
     );

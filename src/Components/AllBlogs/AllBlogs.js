@@ -1,21 +1,35 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import BlogCard from '../BlogCard/BlogCard';
+import db from '../../Firebase';
+import { onSnapshot, collection} from 'firebase/firestore';
 
 
 /**
  * Show all blog post as small clickable cards
  */
 const AllBlogs = () => {
-    const dummyBlog = {
-        "title": "Blog Title",
-        "id": "1234",
-        "summary": "A short summary",
-        "datePosted": "12-01-2023"
-    };
+    const [blogPost, setBlogPost] = useState([]);
+    useEffect(
+        () => {
+        return onSnapshot(collection(db, 'blogPost'), (snapshot) => {
+            setBlogPost(snapshot.docs.map(doc => {
+                const tempData = doc.data()
+                return {
+                    id: doc.id,
+                    ...tempData
+                }
+            }));
+        })}
+        , []);
     
+    if (blogPost.length === 0) {
+        return <></>
+    }
+
+
     return (
         <div>
-            <BlogCard blog={dummyBlog}/>
+            <BlogCard blog={blogPost[0]}/>
         </div>
     );
 };
