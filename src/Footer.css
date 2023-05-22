@@ -1,0 +1,8 @@
+.iconContainer {
+    display: flex;
+    justify-content: center;
+}
+
+.icon {
+    margin: 20px;
+}
