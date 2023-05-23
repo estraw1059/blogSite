@@ -29,7 +29,7 @@ const AllBlogs = () => {
 
     return (
         <div>
-            <BlogCard blog={blogPost[0]}/>
+            {blogPost.map(blog => <BlogCard blog={blog}/>)}
         </div>
     );
 };
