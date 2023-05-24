@@ -10,7 +10,6 @@ function BlogPost() {
     useEffect(() => {
         const getDocumentById = async () => {
             try {
-                console.log("Getting Doc");
                 const docRef = doc(db, 'blogPost', id);
                 getDoc(docRef).then((doc) => {
                     console.log(doc.data(), doc.id);
