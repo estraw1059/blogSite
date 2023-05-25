@@ -23,7 +23,7 @@ const AllBlogs = () => {
                     }
                 })));
             }
-            return getBlogData();
+            getBlogData();
         }, []);
     
     if (blogPost.length === 0) {

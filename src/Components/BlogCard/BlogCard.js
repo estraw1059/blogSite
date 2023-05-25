@@ -5,11 +5,9 @@ import { Card } from 'react-bootstrap';
 //Single Blog Card
 const BlogCard = (props) => {
     const {blog} = props;
-    console.log(blog);
     const navigate = useNavigate();
 
     const handleClick = () => {
-      console.log("Handling Click")
       navigate(`${blog.id}`);
     }
 
