@@ -3,6 +3,7 @@ import { Container, Card, Row, Col } from 'react-bootstrap';
 import db from '../../Firebase';
 import { doc, getDoc} from 'firebase/firestore';
 import { useParams } from 'react-router-dom';
+import "./BlogPost.css";
 
 function BlogPost() {
     const { id } = useParams();
@@ -27,12 +28,13 @@ function BlogPost() {
     if (blogData != null) {
         return (
             <Container fluid>
+                {/* TODO: Use flex to grow the full height */}
                 <Row>
-                    <Col md={2} className="sidebar">
-                        <div>A side bar</div>
+                    <Col md={2} className="sidebar full-height">
+                        <Card>A side bar</Card>
                     </Col>
                     <Col md={10}>
-                        <Card className="my-4">
+                        <Card className="my-4 full-height">
                             <Card.Body>
                                 <Card.Title>{blogData.title}</Card.Title>
                                 <Card.Subtitle className="mb-2 text-muted">{blogData.authorName}</Card.Subtitle>
