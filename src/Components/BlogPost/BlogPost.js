@@ -27,14 +27,14 @@ function BlogPost() {
         }, [id]);
     if (blogData != null) {
         return (
-            <Container fluid>
+            <Container fluid className='h-100 my-5'>
                 {/* TODO: Use flex to grow the full height */}
-                <Row>
-                    <Col md={2} className="sidebar full-height">
-                        <Card>A side bar</Card>
+                <Row className="h-100">
+                    <Col md={2}>
+                        <Card className="my-4 sidebar">A side bar</Card>
                     </Col>
                     <Col md={10}>
-                        <Card className="my-4 full-height">
+                        <Card className="my-4">
                             <Card.Body>
                                 <Card.Title>{blogData.title}</Card.Title>
                                 <Card.Subtitle className="mb-2 text-muted">{blogData.authorName}</Card.Subtitle>
