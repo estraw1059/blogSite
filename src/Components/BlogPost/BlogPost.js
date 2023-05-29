@@ -27,7 +27,7 @@ function BlogPost() {
         }, [id]);
     if (blogData != null) {
         return (
-            <Container fluid className='h-100 my-5'>
+            <Container fluid>
                 {/* TODO: Use flex to grow the full height */}
                 <Row className="h-100">
                     <Col md={2}>
