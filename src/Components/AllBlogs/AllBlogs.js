@@ -13,7 +13,7 @@ const AllBlogs = () => {
         () => {
             const getBlogData = async () => {
                 const blogPostsRef = collection(db, 'blogPost');
-                const q = query(blogPostsRef, limit(1));
+                const q = query(blogPostsRef, limit(20));
                 const querySnapshot = await getDocs(q);
                 setBlogPost(querySnapshot.docs.map((doc => {
                     const tempData = doc.data();

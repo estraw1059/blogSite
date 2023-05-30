@@ -15,8 +15,8 @@ const NavBar = props => {
   return (
     <Navbar onSelect={handleSelect} expand="md" bg="dark" variant="dark" className='navbar navbar-expand' activeKey="home">
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
-      <Navbar.Brand href="/home">Eric Straw</Navbar.Brand>
-      <Navbar.Collapse id="basic-navbar-nav" defaultActiveKey="/home" as="ul">
+      <Navbar.Brand href="/">Eric Straw</Navbar.Brand>
+      <Navbar.Collapse id="basic-navbar-nav" defaultActiveKey="/" as="ul">
         <Nav defaultActiveKey="home">
             <Nav.Link as={Link} eventKey="home" to="/" exact>Home</Nav.Link>
             <Nav.Link as={Link} eventKey="blog" to="blog">Blog</Nav.Link>
