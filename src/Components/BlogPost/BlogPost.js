@@ -29,11 +29,11 @@ function BlogPost() {
         return (
             <Container fluid className="scroll-container">
                 {/* TODO: Use flex to grow the full height */}
-                <Row className="fill-height">
-                    <Col md={2}>
+                <Row>
+                    <Col className="{height: 100%;}" md={2}>
                         <Card className="sidebar">A side bar</Card>
                     </Col>
-                    <Col md={10}>
+                    <Col md={10} className="{height: 100%;}">
                         <Card className="">
                             <Card.Body>
                                 <Card.Title>{blogData.title}</Card.Title>
