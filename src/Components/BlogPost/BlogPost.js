@@ -27,10 +27,10 @@ function BlogPost() {
         }, [id]);
     if (blogData != null) {
         return (
-            <Container fluid className="scroll-container">
+            <Container fluid className="scroll-container no-gutters">
                 {/* TODO: Use flex to grow the full height */}
-                <Row>
-                    <Col className="{height: 100%;}" md={2}>
+                <Row className='no-gutters {height: 100%;}'>
+                    <Col className="{height: 100%;} no-gutters" md={2}>
                         <Card className="sidebar">A side bar</Card>
                     </Col>
                     <Col md={10} className="{height: 100%;}">
