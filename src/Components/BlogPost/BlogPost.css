@@ -5,6 +5,15 @@
     flex: 1;
 }
 
+.row-container{
+    height: 100%;
+    flex: 1;
+}
+
+.column-container {
+    height: 100%;
+}
+
 .fill-height {
     flex: 1;
   }

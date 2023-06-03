@@ -12,7 +12,7 @@ const BlogCard = (props) => {
     }
 
     return (
-        <Card onClick={handleClick}>
+        <Card onClick={handleClick} className='vh-100'>
         <Card.Body>
           <Card.Title>{blog.title}</Card.Title>
           <Card.Text>{blog.summary}</Card.Text>

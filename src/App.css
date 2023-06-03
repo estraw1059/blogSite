@@ -9,6 +9,7 @@
 .mainContent {
   flex-grow: 1;
   overflow-y: auto;
+  display: flex;
   /* flex: 1 1 auto;
   /* padding-top: 50px;
   padding-bottom: 150px; */ 
