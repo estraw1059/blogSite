@@ -6,6 +6,7 @@ import { useRoutes } from 'react-router-dom';
 import WebsiteFooter from './WebsiteFooter';
 import Home from './Pages/Home';
 import Blog from './Pages/Blog';
+import EditBlogPost from './Components/EditBlogPost/EditBlogPost';
 import BlogPost from './Components/BlogPost/BlogPost'
 import AboutMe from './Pages/AboutMe';
 
@@ -30,6 +31,10 @@ function App() {
     {
       path: "/blog/:id",
       element: <BlogPost/>
+    },
+    {
+      path: "/blog/:id/edit",
+      element: <EditBlogPost/>
     }
   ])
 
