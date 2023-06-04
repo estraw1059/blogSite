@@ -2,14 +2,17 @@ import React,  {useState, useEffect} from 'react';
 import 'quill/dist/quill.snow.css'
 import ReactQuill from 'react-quill'
 import { Container } from 'react-bootstrap';
-import db from '../../Firebase';
+import db, {auth} from '../../Firebase';
 import { doc, getDoc} from 'firebase/firestore';
 import { useParams } from 'react-router-dom';
+import { onAuthStateChanged } from 'firebase/auth';
 
 const EditBlogPost = () => {
 
     const { id } = useParams();
     const [blogData, setBlogData] = useState([]);
+    const [user, setUser] = useState(null);
+
     useEffect(() => {
         const getDocumentById = async () => {
             try {
@@ -25,6 +28,12 @@ const EditBlogPost = () => {
             }
         }
         getDocumentById();
+        const adminListener = onAuthStateChanged(auth, (user) => {
+            setUser(user);
+          });
+        return () => {
+            adminListener();
+        }
 
         }, [id]);
 
@@ -54,23 +63,27 @@ const EditBlogPost = () => {
       if (blogData == null) {
         return <div>Loading</div>
       }
-      console.log(blogData.text)
-
-      return (
-        <Container fluid>
-          <h1 style={{ textAlign: "center" }}>Edit Blog Post</h1>
-          <div style={{ display: "grid", justifyContent: "center"}}>
-            <ReactQuill
-              theme="snow"
-              modules={modules}
-              formats={formats}
-              value={blogData.text}
-              style={{ height: "600px" }}
-            >
-            </ReactQuill>
-          </div>
-        </Container>
-      );
+      if (user) {
+        return (
+            <Container fluid>
+              <h1 style={{ textAlign: "center" }}>Edit Blog Post</h1>
+              <div style={{ display: "grid", justifyContent: "center"}}>
+                <ReactQuill
+                  theme="snow"
+                  modules={modules}
+                  formats={formats}
+                  value={blogData.text}
+                  style={{ height: "600px" }}
+                >
+                </ReactQuill>
+              </div>
+            </Container>
+          );
+      } else {
+        return (
+            <div>You are not logged in. Please login</div>
+        )
+      }
 };
 
 export default EditBlogPost;

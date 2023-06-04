@@ -9,6 +9,7 @@ import Blog from './Pages/Blog';
 import EditBlogPost from './Components/EditBlogPost/EditBlogPost';
 import BlogPost from './Components/BlogPost/BlogPost'
 import AboutMe from './Pages/AboutMe';
+import AdminLogin from './Components/AdminLogin/AdminLogin';
 
 function App() {
   let element = useRoutes([
@@ -35,6 +36,10 @@ function App() {
     {
       path: "/blog/:id/edit",
       element: <EditBlogPost/>
+    },
+    {
+      path: "/admin/login",
+      element: <AdminLogin/>
     }
   ])
 
