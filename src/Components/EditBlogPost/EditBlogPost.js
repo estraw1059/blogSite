@@ -1,9 +1,33 @@
-import React from 'react';
+import React,  {useState, useEffect} from 'react';
 import 'quill/dist/quill.snow.css'
 import ReactQuill from 'react-quill'
 import { Container } from 'react-bootstrap';
+import db from '../../Firebase';
+import { doc, getDoc} from 'firebase/firestore';
+import { useParams } from 'react-router-dom';
 
 const EditBlogPost = () => {
+
+    const { id } = useParams();
+    const [blogData, setBlogData] = useState([]);
+    useEffect(() => {
+        const getDocumentById = async () => {
+            try {
+                const docRef = doc(db, 'blogPost', id);
+                getDoc(docRef).then((doc) => {
+                    console.log(doc.data(), doc.id);
+                    setBlogData(doc.data());
+                });
+
+            } catch (error) {
+                console.error('Error getting blog post', error);
+                setBlogData(null);
+            }
+        }
+        getDocumentById();
+
+        }, [id]);
+
     var modules = {
         toolbar: [
           [{ size: ["small", false, "large", "huge"] }],
@@ -27,17 +51,21 @@ const EditBlogPost = () => {
         "link", "image", "align", "size",
       ];
 
+      if (blogData == null) {
+        return <div>Loading</div>
+      }
+      console.log(blogData.text)
 
       return (
         <Container fluid>
-          <h1 style={{ textAlign: "center" }}>Text Editor In React JS</h1>
+          <h1 style={{ textAlign: "center" }}>Edit Blog Post</h1>
           <div style={{ display: "grid", justifyContent: "center"}}>
             <ReactQuill
               theme="snow"
               modules={modules}
               formats={formats}
-              placeholder="write your content ...."
-              style={{ height: "220px" }}
+              value={blogData.text}
+              style={{ height: "600px" }}
             >
             </ReactQuill>
           </div>
