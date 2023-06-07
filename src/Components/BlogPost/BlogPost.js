@@ -1,13 +1,18 @@
 import React, {useState, useEffect} from 'react';
-import { Container, Card, Row, Col } from 'react-bootstrap';
-import db from '../../Firebase';
+import { Container, Card, Row, Col, Button } from 'react-bootstrap';
+import db, {auth} from '../../Firebase';
 import { doc, getDoc} from 'firebase/firestore';
 import { useParams } from 'react-router-dom';
+import { onAuthStateChanged } from 'firebase/auth';
+import { useNavigate } from 'react-router-dom';
 import "./BlogPost.css";
 
 function BlogPost() {
     const { id } = useParams();
     const [blogData, setBlogData] = useState([]);
+    const [user, setUser] = useState(null);
+    const navigate = useNavigate();
+
     useEffect(() => {
         const getDocumentById = async () => {
             try {
@@ -23,11 +28,29 @@ function BlogPost() {
             }
         }
         getDocumentById();
-
+        const adminListener = onAuthStateChanged(auth, (user) => {
+            setUser(user);
+        });
+        return () => {
+            adminListener();
+        }
         }, [id]);
+
+        const onEditClick = () => {
+            navigate(`/blog/${id}/edit`)
+        }
+
     if (blogData != null) {
         return (
             <Container fluid className="no-gutters">
+                {user ? 
+                (<Row className='no-gutters row-container'>
+                    <Col md={10}>
+                    </Col>
+                    <Col md={2}>
+                        <Button onClick={onEditClick} variant="primary">Edit</Button>
+                    </Col>
+                </Row>) : <></>}
                 <Row className='no-gutters row-container'>
                     <Col className="column-container" md={2}>
                         <div className='column-container'>
