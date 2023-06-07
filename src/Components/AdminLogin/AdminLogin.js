@@ -1,10 +1,12 @@
 import React, {useState} from "react";
 import {auth} from "../../Firebase";
+import { useNavigate } from 'react-router-dom';
 import { signInWithEmailAndPassword } from "firebase/auth";
 
 const AdminLogin = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const navigate = useNavigate();
   
     const handleEmailChange = (e) => {
       setEmail(e.target.value);
@@ -13,6 +15,10 @@ const AdminLogin = () => {
     const handlePasswordChange = (e) => {
       setPassword(e.target.value);
     };
+
+    const handleRedirect = () => {
+      navigate('/')
+    }
   
     const handleLogin = (e) => {
       e.preventDefault();
@@ -23,6 +29,7 @@ const AdminLogin = () => {
           // Login successful, do something with the user data
           const user = userCredential.user;
           console.log('Logged in:', user);
+          handleRedirect();
         })
         .catch((error) => {
           // Handle login errors
