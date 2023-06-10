@@ -1,7 +1,7 @@
 import React,  {useState, useEffect} from 'react';
 import 'quill/dist/quill.snow.css'
 import ReactQuill from 'react-quill'
-import { Container } from 'react-bootstrap';
+import { Container, Button } from 'react-bootstrap';
 import db, {auth} from '../../Firebase';
 import { doc, getDoc} from 'firebase/firestore';
 import { useParams } from 'react-router-dom';
@@ -77,6 +77,7 @@ const EditBlogPost = () => {
                 >
                 </ReactQuill>
               </div>
+              <Button>Save</Button>
             </Container>
           );
       } else {
