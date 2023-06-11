@@ -1,7 +1,7 @@
 import React,  {useState, useEffect} from 'react';
 import 'quill/dist/quill.snow.css'
 import ReactQuill from 'react-quill'
-import { Container, Button } from 'react-bootstrap';
+import { Container, Button, Row } from 'react-bootstrap';
 import db, {auth} from '../../Firebase';
 import { doc, getDoc} from 'firebase/firestore';
 import { useParams } from 'react-router-dom';
@@ -66,18 +66,21 @@ const EditBlogPost = () => {
       if (user) {
         return (
             <Container fluid>
-              <h1 style={{ textAlign: "center" }}>Edit Blog Post</h1>
-              <div style={{ display: "grid", justifyContent: "center"}}>
-                <ReactQuill
-                  theme="snow"
-                  modules={modules}
-                  formats={formats}
-                  value={blogData.text}
-                  style={{ height: "600px" }}
-                >
-                </ReactQuill>
-              </div>
-              <Button>Save</Button>
+              <Row>
+                <h1 style={{ textAlign: "center" }}>Edit Blog Post</h1>
+              </Row>
+              <Row style={{maxHeight: '400px', overflow: 'auto'}} classname="m-2">
+                  <ReactQuill
+                    theme="snow"
+                    modules={modules}
+                    formats={formats}
+                    value={blogData.text}
+                    style={{ height: "100%" }}
+                  />
+              </Row>
+              <Row>
+                <Button>Save</Button>
+              </Row>
             </Container>
           );
       } else {
