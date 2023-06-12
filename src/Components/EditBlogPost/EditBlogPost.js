@@ -1,5 +1,6 @@
 import React,  {useState, useEffect} from 'react';
 import 'quill/dist/quill.snow.css'
+import 'quill/dist/quill.bubble.css'
 import ReactQuill from 'react-quill'
 import { Container, Button, Row } from 'react-bootstrap';
 import db, {auth} from '../../Firebase';
@@ -69,17 +70,18 @@ const EditBlogPost = () => {
               <Row>
                 <h1 style={{ textAlign: "center" }}>Edit Blog Post</h1>
               </Row>
-              <Row style={{maxHeight: '400px', overflow: 'auto'}} classname="m-2">
+              <Row>
+                <div>
                   <ReactQuill
-                    theme="snow"
                     modules={modules}
                     formats={formats}
                     value={blogData.text}
-                    style={{ height: "100%" }}
+                    style={{ height: '500px', overflow: 'auto' }}
                   />
+                </div>
               </Row>
-              <Row>
-                <Button>Save</Button>
+              <Row className='d-flex justify-content-center'>
+                <Button style={{width: '100px'}}>Save</Button>
               </Row>
             </Container>
           );
