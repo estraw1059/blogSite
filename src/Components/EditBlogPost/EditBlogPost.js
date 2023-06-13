@@ -7,6 +7,7 @@ import db, {auth} from '../../Firebase';
 import { doc, getDoc} from 'firebase/firestore';
 import { useParams } from 'react-router-dom';
 import { onAuthStateChanged } from 'firebase/auth';
+import './EditBlogPost.css'
 
 const EditBlogPost = () => {
 
@@ -71,12 +72,12 @@ const EditBlogPost = () => {
                 <h1 style={{ textAlign: "center" }}>Edit Blog Post</h1>
               </Row>
               <Row>
-                <div>
+                <div className='m-2'>
                   <ReactQuill
                     modules={modules}
                     formats={formats}
                     value={blogData.text}
-                    style={{ height: '500px', overflow: 'auto' }}
+                    style={{ height: '100%', overflow: 'auto' }}
                   />
                 </div>
               </Row>
