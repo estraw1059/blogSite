@@ -15,7 +15,7 @@ const NavBar = props => {
   return (
     <Navbar onSelect={handleSelect} expand="md" bg="dark" variant="dark" className='navbar navbar-expand' activeKey="home">
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
-      <Navbar.Brand href="/">Eric Straw</Navbar.Brand>
+      <Navbar.Brand href="/" className='m-2'>Eric Straw</Navbar.Brand>
       <Navbar.Collapse id="basic-navbar-nav" defaultActiveKey="/" as="ul">
         <Nav defaultActiveKey="home">
             <Nav.Link as={Link} eventKey="home" to="/" exact>Home</Nav.Link>
@@ -26,7 +26,7 @@ const NavBar = props => {
       <Nav.Item className="flex-grow-1">
           //This is for spacing
       </Nav.Item>
-      <Nav.Item className='d-flex'>
+      <Nav.Item className='d-flex m-2'>
           <Nav.Item>
             <Nav.Link href="https://github.com/estraw1059" target="_blank">
               <img src={githubSVG} alt="github" />
