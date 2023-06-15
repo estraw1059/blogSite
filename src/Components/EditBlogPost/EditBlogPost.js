@@ -88,7 +88,7 @@ const EditBlogPost = () => {
           );
       } else {
         return (
-            <div>You are not logged in. Please login</div>
+            <div>You are not logged in. <a href='/admin/login'>Please login</a></div>
         )
       }
 };
