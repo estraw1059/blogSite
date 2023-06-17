@@ -27,17 +27,17 @@ const NavBar = props => {
           //This is for spacing
       </Nav.Item>
       <Nav.Item className='d-flex m-2'>
-          <Nav.Item>
+          <Nav.Item className='d-flex m-2'>
             <Nav.Link href="https://github.com/estraw1059" target="_blank">
               <img src={githubSVG} alt="github" />
             </Nav.Link>
           </Nav.Item>
-          <Nav.Item>
+          <Nav.Item className='d-flex m-2'>
             <Nav.Link href="https://www.linkedin.com/in/eric-straw-477739102" target="_blank">
               <img src={LinkedIn} alt="LinkedIn"/>
             </Nav.Link>
           </Nav.Item>
-          <Nav.Item>
+          <Nav.Item className='d-flex m-2'>
             <Nav.Link href='mailto:estraw@smu.edu'>
               <img src={emailSVG} alt="Email Me"/>
             </Nav.Link>
