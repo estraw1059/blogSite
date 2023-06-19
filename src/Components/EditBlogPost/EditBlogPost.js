@@ -2,7 +2,7 @@ import React,  {useState, useEffect, useRef} from 'react';
 import 'quill/dist/quill.snow.css'
 import 'quill/dist/quill.bubble.css'
 import ReactQuill from 'react-quill'
-import { Container, Button, Row } from 'react-bootstrap';
+import { Container, Button, Row, Modal } from 'react-bootstrap';
 import db, {auth} from '../../Firebase';
 import { doc, getDoc, setDoc} from 'firebase/firestore';
 import { useParams } from 'react-router-dom';
@@ -15,8 +15,12 @@ const EditBlogPost = () => {
     const { id } = useParams();
     const [blogData, setBlogData] = useState([]);
     const [user, setUser] = useState(null);
+    const [showModal, setShowModal] = useState(false);
     const quillRef = useRef(null);
     const navigate = useNavigate();
+
+    const handleClose = () => setShowModal(false);
+    const handleShow = () => setShowModal(true);
 
     useEffect(() => {
         const getDocumentById = async () => {
@@ -82,9 +86,13 @@ const EditBlogPost = () => {
       }
       if (user) {
         return (
+          <>
             <Container fluid>
               <Row>
-                <h1 style={{ textAlign: "center" }}>Edit Blog Post</h1>
+                <h1 className='header'>Edit Blog Post</h1>
+              </Row>
+              <Row>
+                <Button className='subheader' variant="link" onClick={handleShow}>{blogData.title}</Button>
               </Row>
               <Row>
                 <div className='m-2'>
@@ -101,6 +109,24 @@ const EditBlogPost = () => {
                 <Button style={{width: '100px'}} onClick={saveChanges}>Save</Button>
               </Row>
             </Container>
+            <Modal show={showModal} onHide={handleClose}>
+              <Modal.Header closeButton>
+                <Modal.Title>My Modal</Modal.Title>
+              </Modal.Header>
+              <Modal.Body>
+                {/* Content for the modal */}
+                <p>This is the modal body content.</p>
+              </Modal.Body>
+              <Modal.Footer>
+                <Button variant="secondary" onClick={handleClose}>
+                  Close
+                </Button>
+                <Button variant="primary" onClick={handleClose}>
+                  Save Changes
+                </Button>
+              </Modal.Footer>
+              </Modal>
+            </>
           );
       } else {
         return (

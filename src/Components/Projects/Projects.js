@@ -77,8 +77,9 @@ const Projects = () => {
     return (
         <Container className="projectSpacing">
             <Card className="cardSpacing">
-                <Row className='header'>
+                <Row className='header m-2'>
                     <h1>Projects</h1>
+                    <h6>Select to filter by language</h6>
                 </Row>
                 <Row>
                         {filters.map((filter, index) => {
