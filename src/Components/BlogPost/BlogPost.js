@@ -44,7 +44,7 @@ function BlogPost() {
         return (
             <Container fluid className="no-gutters">
                 {user ? 
-                (<Row className='no-gutters row-container'>
+                (<Row className='m-2'>
                     <Col md={10}>
                     </Col>
                     <Col md={2}>

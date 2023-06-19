@@ -1,12 +1,13 @@
-import React,  {useState, useEffect} from 'react';
+import React,  {useState, useEffect, useRef} from 'react';
 import 'quill/dist/quill.snow.css'
 import 'quill/dist/quill.bubble.css'
 import ReactQuill from 'react-quill'
 import { Container, Button, Row } from 'react-bootstrap';
 import db, {auth} from '../../Firebase';
-import { doc, getDoc} from 'firebase/firestore';
+import { doc, getDoc, setDoc} from 'firebase/firestore';
 import { useParams } from 'react-router-dom';
 import { onAuthStateChanged } from 'firebase/auth';
+import { useNavigate } from 'react-router-dom';
 import './EditBlogPost.css'
 
 const EditBlogPost = () => {
@@ -14,6 +15,8 @@ const EditBlogPost = () => {
     const { id } = useParams();
     const [blogData, setBlogData] = useState([]);
     const [user, setUser] = useState(null);
+    const quillRef = useRef(null);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const getDocumentById = async () => {
@@ -38,6 +41,18 @@ const EditBlogPost = () => {
         }
 
         }, [id]);
+
+    const saveChanges = () => {
+      const editor = quillRef.current.getEditor();
+      const text = editor.getText();
+      const docRef = doc(db, 'blogPost', id);
+      const dataUpdate = {
+        'text': text
+      }
+      setDoc(docRef, dataUpdate).then(() => {
+        navigate(`/blog/${id}`)
+      })
+    }
 
     var modules = {
         toolbar: [
@@ -78,11 +93,12 @@ const EditBlogPost = () => {
                     formats={formats}
                     value={blogData.text}
                     style={{ height: '100%', overflow: 'auto' }}
+                    ref={quillRef}
                   />
                 </div>
               </Row>
               <Row className='d-flex justify-content-center'>
-                <Button style={{width: '100px'}}>Save</Button>
+                <Button style={{width: '100px'}} onClick={saveChanges}>Save</Button>
               </Row>
             </Container>
           );
