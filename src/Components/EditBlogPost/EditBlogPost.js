@@ -2,7 +2,7 @@ import React,  {useState, useEffect, useRef} from 'react';
 import 'quill/dist/quill.snow.css'
 import 'quill/dist/quill.bubble.css'
 import ReactQuill from 'react-quill'
-import { Container, Button, Row, Modal } from 'react-bootstrap';
+import { Container, Button, Row, Modal, Form } from 'react-bootstrap';
 import db, {auth} from '../../Firebase';
 import { doc, getDoc, setDoc} from 'firebase/firestore';
 import { useParams } from 'react-router-dom';
@@ -16,6 +16,7 @@ const EditBlogPost = () => {
     const [blogData, setBlogData] = useState([]);
     const [user, setUser] = useState(null);
     const [showModal, setShowModal] = useState(false);
+    const [editTitleField, setEditTitleField] = useState("");
     const quillRef = useRef(null);
     const navigate = useNavigate();
 
@@ -29,6 +30,7 @@ const EditBlogPost = () => {
                 getDoc(docRef).then((doc) => {
                     console.log(doc.data(), doc.id);
                     setBlogData(doc.data());
+                    setEditTitleField(doc.data().title);
                 });
 
             } catch (error) {
@@ -57,6 +59,10 @@ const EditBlogPost = () => {
         navigate(`/blog/${id}`)
       })
     }
+
+    const handleInputChange = (event) => {
+      setEditTitleField(event.target.value);
+    };
 
     var modules = {
         toolbar: [
@@ -114,8 +120,13 @@ const EditBlogPost = () => {
                 <Modal.Title>My Modal</Modal.Title>
               </Modal.Header>
               <Modal.Body>
-                {/* Content for the modal */}
-                <p>This is the modal body content.</p>
+                <Form>
+                  <Form.Control
+                    type="text"
+                    defaultValue={editTitleField}
+                    onChange={handleInputChange}
+                  />
+                </Form>
               </Modal.Body>
               <Modal.Footer>
                 <Button variant="secondary" onClick={handleClose}>
