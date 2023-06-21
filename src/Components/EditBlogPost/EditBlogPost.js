@@ -48,7 +48,7 @@ const EditBlogPost = () => {
 
         }, [id]);
 
-    const saveChanges = () => {
+    const saveTextChanges = () => {
       const editor = quillRef.current.getEditor();
       const text = editor.getText();
       const docRef = doc(db, 'blogPost', id);
@@ -57,6 +57,18 @@ const EditBlogPost = () => {
       }
       setDoc(docRef, dataUpdate).then(() => {
         navigate(`/blog/${id}`)
+      })
+    }
+
+    
+    const saveTitleChanges = () => {
+      const docRef = doc(db, 'blogPost', id);
+      const dataUpdate = {
+        'title': editTitleField
+      }
+      setDoc(docRef, dataUpdate).then(() => {
+        blogData.title = editTitleField;
+        handleClose();
       })
     }
 
@@ -112,7 +124,7 @@ const EditBlogPost = () => {
                 </div>
               </Row>
               <Row className='d-flex justify-content-center'>
-                <Button style={{width: '100px'}} onClick={saveChanges}>Save</Button>
+                <Button style={{width: '100px'}} onClick={saveTextChanges}>Save</Button>
               </Row>
             </Container>
             <Modal show={showModal} onHide={handleClose}>
@@ -132,7 +144,7 @@ const EditBlogPost = () => {
                 <Button variant="secondary" onClick={handleClose}>
                   Close
                 </Button>
-                <Button variant="primary" onClick={handleClose}>
+                <Button variant="primary" onClick={saveTitleChanges}>
                   Save Changes
                 </Button>
               </Modal.Footer>
