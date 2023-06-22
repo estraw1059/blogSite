@@ -55,7 +55,7 @@ const EditBlogPost = () => {
       const dataUpdate = {
         'text': text
       }
-      setDoc(docRef, dataUpdate).then(() => {
+      setDoc(docRef, dataUpdate, { merge: true }).then(() => {
         navigate(`/blog/${id}`)
       })
     }
@@ -66,7 +66,7 @@ const EditBlogPost = () => {
       const dataUpdate = {
         'title': editTitleField
       }
-      setDoc(docRef, dataUpdate).then(() => {
+      setDoc(docRef, dataUpdate, { merge: true }).then(() => {
         blogData.title = editTitleField;
         handleClose();
       })
