@@ -17,6 +17,7 @@ const EditBlogPost = () => {
     const [user, setUser] = useState(null);
     const [showModal, setShowModal] = useState(false);
     const [editTitleField, setEditTitleField] = useState("");
+    const [disableTitleChange, setDisableTitleChange] = useState(false);
     const quillRef = useRef(null);
     const navigate = useNavigate();
 
@@ -28,9 +29,9 @@ const EditBlogPost = () => {
             try {
                 const docRef = doc(db, 'blogPost', id);
                 getDoc(docRef).then((doc) => {
-                    console.log(doc.data(), doc.id);
                     setBlogData(doc.data());
                     setEditTitleField(doc.data().title);
+
                 });
 
             } catch (error) {
@@ -74,6 +75,13 @@ const EditBlogPost = () => {
 
     const handleInputChange = (event) => {
       setEditTitleField(event.target.value);
+      let cleanedTitle = event.target.value.replace(/\s/g, "")
+      console.log(cleanedTitle)
+      if(cleanedTitle.length  == 0) {
+        setDisableTitleChange(true);
+      } else {
+        setDisableTitleChange(false);
+      }
     };
 
     var modules = {
@@ -144,7 +152,7 @@ const EditBlogPost = () => {
                 <Button variant="secondary" onClick={handleClose}>
                   Close
                 </Button>
-                <Button variant="primary" onClick={saveTitleChanges}>
+                <Button variant="primary" disabled={disableTitleChange} onClick={saveTitleChanges}>
                   Save Changes
                 </Button>
               </Modal.Footer>
