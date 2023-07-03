@@ -77,7 +77,7 @@ const EditBlogPost = () => {
       setEditTitleField(event.target.value);
       let cleanedTitle = event.target.value.replace(/\s/g, "")
       console.log(cleanedTitle)
-      if(cleanedTitle.length  == 0) {
+      if(cleanedTitle.length  === 0) {
         setDisableTitleChange(true);
       } else {
         setDisableTitleChange(false);

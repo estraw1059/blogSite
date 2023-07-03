@@ -6,6 +6,7 @@ import { useParams } from 'react-router-dom';
 import { onAuthStateChanged } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 import "./BlogPost.css";
+import SideBar from '../SideBar/SideBar';
 
 function BlogPost() {
     const { id } = useParams();
@@ -54,7 +55,7 @@ function BlogPost() {
                 <Row className='no-gutters row-container'>
                     <Col className="column-container" md={2}>
                         <div className='column-container'>
-                            A Side Bar
+                            <SideBar/>
                         </div>
                     </Col>
                     <Col md={10}>
