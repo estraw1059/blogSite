@@ -1,22 +1,25 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import { useParams } from 'react-router-dom';
+import { Card } from 'react-bootstrap';
 import db from '../../Firebase';
 import { collection, orderBy, getDocs, query, where, limit} from 'firebase/firestore';
-import { useEffect } from 'react';
 
 
 const SideBar = () => {
     const { id } = useParams();
+    const {sideBarCards, setSideBarCards} = useState([]);
 
     //Get 5 Most Recent post that aren't the current one
     useEffect(() => {
         const getDocumentById = async () => {
             try {
-                const q = query(collection(db, 'blogPost'), where("id","!=",id), limit(5), orderBy("title"));
+                const q = query(collection(db, 'blogPost'), where("id","!=",id), limit(5), orderBy("id", "title"));
                 const querySnapshot = await getDocs(q);
+                const cardList = [];
                 querySnapshot.forEach((doc) => {
-                    console.log(doc.id, " => ", doc.data());
+                    cardList.append(doc);
                 });
+                setSideBarCards(cardList);
 
             } catch (error) {
                 console.error('Error getting blog post', error);
@@ -25,11 +28,11 @@ const SideBar = () => {
         getDocumentById();
     }, [id])
 
-
+    console.log(sideBarCards);
     return (
-        <div>
-            
-        </div>
+        <Card>
+            Sidebar
+        </Card>
     );
 };
 

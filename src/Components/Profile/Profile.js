@@ -20,7 +20,7 @@ const Profile = () => {
             <Container>
                 <Row>
                     <Col xs = {12} md={4}>
-                        <Image src='me.jpg' alt="Profile Image" className='profileImage' fluid/>
+                        <Image src='me.jpg' alt="Profile Image" className='profileImage' fluid="true"/>
                     </Col>
                     <Col xs={12} md={8}>
                         <h1>{profile.name}</h1>

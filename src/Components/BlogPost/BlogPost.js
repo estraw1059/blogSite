@@ -43,7 +43,7 @@ function BlogPost() {
 
     if (blogData != null) {
         return (
-            <Container fluid className="no-gutters">
+            <Container fluid="true" className="no-gutters">
                 {user ? 
                 (<Row className='m-2'>
                     <Col md={10}>

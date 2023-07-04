@@ -6,7 +6,7 @@ import LinkdenIn from "./SVG/LinkedIn.svg";
 import './WebsiteFooter.css';
 const WebsiteFooter = () => {
     return (
-        <footer fluid className="bg-dark text-light footer">
+        <footer fluid="true" className="bg-dark text-light footer">
         <Row>
             <Col className="text-center py-3">
                 Created By Eric Straw

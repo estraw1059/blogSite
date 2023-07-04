@@ -13,12 +13,12 @@ const NavBar = props => {
   };
 
   return (
-    <Navbar onSelect={handleSelect} expand="md" bg="dark" variant="dark" className='navbar navbar-expand' activeKey="home">
+    <Navbar onSelect={handleSelect} expand="md" bg="dark" variant="dark" className='navbar navbar-expand' activekey="home">
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Brand href="/" className='m-2'>Eric Straw</Navbar.Brand>
-      <Navbar.Collapse id="basic-navbar-nav" defaultActiveKey="/" as="ul">
+      <Navbar.Collapse id="basic-navbar-nav" defaultactivekey="/" as="ul">
         <Nav defaultActiveKey="home">
-            <Nav.Link as={Link} eventKey="home" to="/" exact>Home</Nav.Link>
+            <Nav.Link as={Link} eventKey="home" to="/" exact="true">Home</Nav.Link>
             <Nav.Link as={Link} eventKey="blog" to="blog">Blog</Nav.Link>
             <Nav.Link as={Link} eventKey="aboutMe" to="aboutMe">About Me</Nav.Link>
         </Nav>

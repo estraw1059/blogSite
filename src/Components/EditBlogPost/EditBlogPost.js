@@ -113,7 +113,7 @@ const EditBlogPost = () => {
       if (user) {
         return (
           <>
-            <Container fluid>
+            <Container fluid="true">
               <Row>
                 <h1 className='header'>Edit Blog Post</h1>
               </Row>
