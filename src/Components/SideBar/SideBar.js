@@ -7,7 +7,7 @@ import { collection, orderBy, getDocs, query, where, limit} from 'firebase/fires
 
 const SideBar = () => {
     const { id } = useParams();
-    const {sideBarCards, setSideBarCards} = useState([]);
+    const [sideBarCards, setSideBarCards] = useState([]);
 
     //Get 5 Most Recent post that aren't the current one
     useEffect(() => {
@@ -16,6 +16,7 @@ const SideBar = () => {
                 const q = query(collection(db, 'blogPost'), where("id","!=",id), limit(5), orderBy("id", "title"));
                 const querySnapshot = await getDocs(q);
                 const cardList = [];
+                console.log(querySnapshot);
                 querySnapshot.forEach((doc) => {
                     cardList.append(doc);
                 });
@@ -29,9 +30,11 @@ const SideBar = () => {
     }, [id])
 
     console.log(sideBarCards);
+
+
     return (
         <Card>
-            Sidebar
+            <Card.Title>{sideBarCards.legnth > 0 ? sideBarCards[0].title: "Loading"}</Card.Title>
         </Card>
     );
 };
