@@ -11,14 +11,14 @@ const SideBar = () => {
 
     //Get 5 Most Recent post that aren't the current one
     useEffect(() => {
-        const getDocumentById = async () => {
+        //, where("id","!=",id), limit(5), orderBy("id", "title")
+        const getDocuments = async () => {
             try {
-                const q = query(collection(db, 'blogPost'), where("id","!=",id), limit(5), orderBy("id", "title"));
+                const q = query(collection(db, 'blogPost'));
                 const querySnapshot = await getDocs(q);
                 const cardList = [];
-                console.log(querySnapshot);
                 querySnapshot.forEach((doc) => {
-                    cardList.append(doc);
+                    cardList.push(doc.data());
                 });
                 setSideBarCards(cardList);
 
@@ -26,7 +26,7 @@ const SideBar = () => {
                 console.error('Error getting blog post', error);
             }
         }
-        getDocumentById();
+        getDocuments();
     }, [id])
 
     console.log(sideBarCards);
@@ -34,7 +34,7 @@ const SideBar = () => {
 
     return (
         <Card>
-            <Card.Title>{sideBarCards.legnth > 0 ? sideBarCards[0].title: "Loading"}</Card.Title>
+            <Card.Title>{sideBarCards.length > 0 ? sideBarCards[0].title: "Loading"}</Card.Title>
         </Card>
     );
 };
