@@ -29,13 +29,18 @@ const SideBar = () => {
         getDocuments();
     }, [id])
 
-    console.log(sideBarCards);
-
 
     return (
-        <Card>
-            <Card.Title>{sideBarCards.length > 0 ? sideBarCards[0].title: "Loading"}</Card.Title>
-        </Card>
+        <>
+            {sideBarCards.map((post, index) => {
+                console.log(post);
+                return (
+                    <Card key={index}>
+                        <Card.Title>{post.title}</Card.Title>
+                    </Card>
+                );
+            })}
+        </>
     );
 };
 
