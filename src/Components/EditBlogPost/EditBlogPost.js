@@ -54,6 +54,7 @@ const EditBlogPost = () => {
       const text = editor.getText();
       const docRef = doc(db, 'blogPost', id);
       const dataUpdate = {
+        id,
         'text': text
       }
       setDoc(docRef, dataUpdate, { merge: true }).then(() => {
