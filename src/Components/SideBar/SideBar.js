@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import { useParams } from 'react-router-dom';
 import { Card } from 'react-bootstrap';
 import db from '../../Firebase';
-import { collection, orderBy, getDocs, query, where, FieldPath, limit} from 'firebase/firestore';
+import { collection, orderBy, getDocs, query, where, FieldPath, limit, or} from 'firebase/firestore';
 
 
 const SideBar = () => {
@@ -14,7 +14,7 @@ const SideBar = () => {
         //, where("id","!=",id), limit(5), orderBy("id", "title")
         const getDocuments = async () => {
             try {
-                const q = query(collection(db, 'blogPost'), where('id', '!=', id), limit(5), orderBy('id', 'title'));
+                const q = query(collection(db, 'blogPost'), limit(5), where('id', '!=', id));
                 const querySnapshot = await getDocs(q);
                 const cardList = [];
                 querySnapshot.forEach((doc) => {
@@ -33,7 +33,6 @@ const SideBar = () => {
     return (
         <>
             {sideBarCards.map((post, index) => {
-                console.log(post);
                 return (
                     <Card key={index}>
                         <Card.Title>{post.title}</Card.Title>

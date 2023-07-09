@@ -52,18 +52,14 @@ function BlogPost() {
                     </Col>
                 </Row>) : <></>}
                 <Row className='no-gutters row-container'>
-                    <Col className="column-container" md={2}>
-                        <div className='column-container'>
-                            <SideBar/>
-                        </div>
+                    <Col md={2}>
+                        <SideBar/>
                     </Col>
                     <Col md={10}>
-                        <Card className="d-flex flex-column">
-                            <Card.Body className="flex-grow-1">
-                                <Card.Title>{blogData.title}</Card.Title>
-                                <Card.Subtitle className="mb-2 text-muted">{blogData.authorName}</Card.Subtitle>
-                                <Card.Text>{blogData.text}</Card.Text>
-                            </Card.Body>
+                        <Card>
+                            <Card.Title>{blogData.title}</Card.Title>
+                            <Card.Subtitle className="mb-2 text-muted">Eric Straw</Card.Subtitle>
+                            <Card.Text>{blogData.text}</Card.Text>
                         </Card>
                     </Col>
                 </Row>

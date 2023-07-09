@@ -32,9 +32,9 @@ const AllBlogs = () => {
 
 
     return (
-        <div>
+        <>
             {blogPost.map(blog => <BlogCard blog={blog}/>)}
-        </div>
+        </>
     );
 };
 

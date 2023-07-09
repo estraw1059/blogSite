@@ -13,11 +13,9 @@ const BlogCard = (props) => {
     }
 
     return (
-        <Card onClick={handleClick} className='blogCard'>
-        <Card.Body>
-          <Card.Title>{blog.title}</Card.Title>
-          <Card.Text>{blog.summary}</Card.Text>
-        </Card.Body>
+      <Card onClick={handleClick} className='blogCard'>
+        <Card.Title>{blog.title}</Card.Title>
+        <Card.Text>{blog.summary}</Card.Text>
       </Card>
     );
 };
