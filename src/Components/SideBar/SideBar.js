@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import { useParams } from 'react-router-dom';
 import { Card } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 import db from '../../Firebase';
 import { collection, orderBy, getDocs, query, where, FieldPath, limit, or} from 'firebase/firestore';
 
@@ -8,6 +9,12 @@ import { collection, orderBy, getDocs, query, where, FieldPath, limit, or} from 
 const SideBar = () => {
     const { id } = useParams();
     const [sideBarCards, setSideBarCards] = useState([]);
+    const navigate = useNavigate();
+    
+    const switchPost = (id) => {
+        navigate(`/blog/${id}`);
+    }
+
 
     //Get 5 Most Recent post that aren't the current one
     useEffect(() => {
@@ -34,8 +41,10 @@ const SideBar = () => {
         <>
             {sideBarCards.map((post, index) => {
                 return (
-                    <Card key={index}>
-                        <Card.Title>{post.title}</Card.Title>
+                    <Card onClick={() => switchPost(post.id)} key={index}>
+                        <Card.Body>
+                            <Card.Title>{post.title}</Card.Title>
+                        </Card.Body>
                     </Card>
                 );
             })}
