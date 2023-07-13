@@ -43,7 +43,7 @@ const SideBar = () => {
                 return (
                     <Card onClick={() => switchPost(post.id)} key={index}>
                         <Card.Body>
-                            <Card.Title>{post.title}</Card.Title>
+                            <h5>{post.title}</h5>
                         </Card.Body>
                     </Card>
                 );
