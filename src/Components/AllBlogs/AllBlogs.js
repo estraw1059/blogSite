@@ -1,7 +1,10 @@
 import React, {useState, useEffect} from 'react';
+import { Container, Row, Col, Button } from 'react-bootstrap';
 import BlogCard from '../BlogCard/BlogCard';
-import db from '../../Firebase';
+import db, {auth} from '../../Firebase';
 import { collection, query, limit, getDocs} from 'firebase/firestore';
+import { onAuthStateChanged } from 'firebase/auth';
+const { v4: uuidv4 } = require('uuid');
 
 
 /**
@@ -9,6 +12,7 @@ import { collection, query, limit, getDocs} from 'firebase/firestore';
  */
 const AllBlogs = () => {
     const [blogPost, setBlogPost] = useState([]);
+    const [user, setUser] = useState(null);
     useEffect(
         () => {
             const getBlogData = async () => {
@@ -24,17 +28,38 @@ const AllBlogs = () => {
                 })));
             }
             getBlogData();
+            const adminListener = onAuthStateChanged(auth, (user) => {
+                setUser(user);
+            });
+            return () => {
+                adminListener();
+            }
         }, []);
     
     if (blogPost.length === 0) {
         return <></>
     }
 
+    const newPostCreation = () => {
+        const newPostId = uuidv4();
+        console.log(`New UUID ${newPostId}`)
+        //TODO: Direct to Page for document creation
+    }
+
 
     return (
-        <>
-            {blogPost.map(blog => <BlogCard blog={blog}/>)}
-        </>
+        <Container>
+            {user ? 
+                (<Row className='m-2'>
+                    <Col md={10}>
+                    </Col>
+                    <Col md={2}>
+                        <Button onClick={newPostCreation} variant="primary">Create New Post</Button>
+                    </Col>
+                </Row>) : <></>
+            }
+            {blogPost.map(blog => <Row><BlogCard blog={blog}/></Row>)}
+        </Container>
     );
 };
 
