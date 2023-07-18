@@ -4,6 +4,7 @@ import BlogCard from '../BlogCard/BlogCard';
 import db, {auth} from '../../Firebase';
 import { collection, query, limit, getDocs} from 'firebase/firestore';
 import { onAuthStateChanged } from 'firebase/auth';
+import { useNavigate } from 'react-router-dom';
 const { v4: uuidv4 } = require('uuid');
 
 
@@ -13,6 +14,7 @@ const { v4: uuidv4 } = require('uuid');
 const AllBlogs = () => {
     const [blogPost, setBlogPost] = useState([]);
     const [user, setUser] = useState(null);
+    const navigate = useNavigate();
     useEffect(
         () => {
             const getBlogData = async () => {
@@ -42,7 +44,8 @@ const AllBlogs = () => {
 
     const newPostCreation = () => {
         const newPostId = uuidv4();
-        console.log(`New UUID ${newPostId}`)
+        console.log(`New UUID ${newPostId}`);
+        navigate(`${newPostId}/edit`);
         //TODO: Direct to Page for document creation
     }
 
