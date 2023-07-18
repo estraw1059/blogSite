@@ -5,7 +5,7 @@ import ReactQuill from 'react-quill'
 import { Container, Button, Row, Modal, Form } from 'react-bootstrap';
 import db, {auth} from '../../Firebase';
 import { doc, getDoc, setDoc} from 'firebase/firestore';
-import { useParams } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import { onAuthStateChanged } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 import './EditBlogPost.css'
@@ -20,6 +20,8 @@ const EditBlogPost = () => {
     const [disableTitleChange, setDisableTitleChange] = useState(false);
     const quillRef = useRef(null);
     const navigate = useNavigate();
+    const location = useLocation();
+    const param = location.state?.param;
 
     const handleClose = () => setShowModal(false);
     const handleShow = () => setShowModal(true);
@@ -39,7 +41,12 @@ const EditBlogPost = () => {
                 setBlogData(null);
             }
         }
-        getDocumentById();
+        if (param !== 'new') {
+          getDocumentById();
+        } else {
+          setBlogData({title: 'Untitled'})
+          setEditTitleField('Untitled')
+        }
         const adminListener = onAuthStateChanged(auth, (user) => {
             setUser(user);
           });

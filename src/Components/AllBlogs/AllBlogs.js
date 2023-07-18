@@ -45,7 +45,7 @@ const AllBlogs = () => {
     const newPostCreation = () => {
         const newPostId = uuidv4();
         console.log(`New UUID ${newPostId}`);
-        navigate(`${newPostId}/edit`);
+        navigate(`${newPostId}/edit`, { state: { param: 'new' } });
         //TODO: Direct to Page for document creation
     }
 
