@@ -2,7 +2,7 @@ import React,  {useState, useEffect, useRef} from 'react';
 import 'quill/dist/quill.snow.css'
 import 'quill/dist/quill.bubble.css'
 import ReactQuill from 'react-quill'
-import { Container, Button, Row, Modal, Form } from 'react-bootstrap';
+import { Container, Button, Row, Col, Modal, Form } from 'react-bootstrap';
 import db, {auth} from '../../Firebase';
 import { doc, getDoc, setDoc} from 'firebase/firestore';
 import { useLocation, useParams } from 'react-router-dom';
@@ -121,8 +121,9 @@ const EditBlogPost = () => {
         return (
           <>
             <Container fluid="true">
+              <div style={{ position: 'relative' }}>
               <Row>
-                <h1 className='header'>Edit Blog Post</h1>
+                  <h1 className='header'>Edit Blog Post</h1>
               </Row>
               <Row>
                 <Button className='subheader' variant="link" onClick={handleShow}>{blogData.title}</Button>
@@ -141,6 +142,16 @@ const EditBlogPost = () => {
               <Row className='d-flex justify-content-center'>
                 <Button style={{width: '100px'}} onClick={saveTextChanges}>Save</Button>
               </Row>
+              <Button
+                className="position-absolute top-0 end-0 mt-3 me-3"
+                variant="primary"
+                onClick={() => {
+                  // Your button click handler logic here
+                }}
+              >
+                Delete
+              </Button>
+              </div>
             </Container>
             <Modal show={showModal} onHide={handleClose}>
               <Modal.Header closeButton>
