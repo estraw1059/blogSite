@@ -54,7 +54,7 @@ const EditBlogPost = () => {
             adminListener();
         }
 
-        }, [id]);
+        }, [id, param]);
 
     const saveTextChanges = () => {
       const editor = quillRef.current.getEditor();
@@ -84,7 +84,6 @@ const EditBlogPost = () => {
     const handleInputChange = (event) => {
       setEditTitleField(event.target.value);
       let cleanedTitle = event.target.value.replace(/\s/g, "")
-      console.log(cleanedTitle)
       if(cleanedTitle.length  === 0) {
         setDisableTitleChange(true);
       } else {
