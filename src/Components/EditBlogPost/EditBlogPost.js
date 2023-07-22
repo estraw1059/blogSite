@@ -147,6 +147,8 @@ const EditBlogPost = () => {
                 variant="primary"
                 onClick={() => {
                   // Your button click handler logic here
+                  console.log("Need Pop-up to Confirm Delete");
+                  console.log("Complete Delete");
                 }}
               >
                 Delete
