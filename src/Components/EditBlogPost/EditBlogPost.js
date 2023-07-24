@@ -15,7 +15,8 @@ const EditBlogPost = () => {
     const { id } = useParams();
     const [blogData, setBlogData] = useState([]);
     const [user, setUser] = useState(null);
-    const [showModal, setShowModal] = useState(false);
+    const [showEditTitleModal, setShowEditTitleModal] = useState(false);
+    const [showDeleteTitleModal, setShowDeleteTitleModal] = useState(false);
     const [editTitleField, setEditTitleField] = useState("");
     const [disableTitleChange, setDisableTitleChange] = useState(false);
     const quillRef = useRef(null);
@@ -23,8 +24,10 @@ const EditBlogPost = () => {
     const location = useLocation();
     const param = location.state?.param;
 
-    const handleClose = () => setShowModal(false);
-    const handleShow = () => setShowModal(true);
+    const handleTitleClose = () => setShowEditTitleModal(false);
+    const handleTitleShow = () => setShowEditTitleModal(true);
+    const handleDeleteModalShow = () => setShowDeleteTitleModal(true);
+    const handleDeleteModalClose = () => setShowDeleteTitleModal(false);
 
     useEffect(() => {
         const getDocumentById = async () => {
@@ -77,8 +80,13 @@ const EditBlogPost = () => {
       }
       setDoc(docRef, dataUpdate, { merge: true }).then(() => {
         blogData.title = editTitleField;
-        handleClose();
+        handleTitleClose();
       })
+    }
+
+    const deletePost = () => {
+      console.log("This needs to delete the post");
+      handleDeleteModalClose();
     }
 
     const handleInputChange = (event) => {
@@ -126,7 +134,7 @@ const EditBlogPost = () => {
                   <h1 className='header'>Edit Blog Post</h1>
               </Row>
               <Row>
-                <Button className='subheader' variant="link" onClick={handleShow}>{blogData.title}</Button>
+                <Button className='subheader' variant="link" onClick={handleTitleShow}>{blogData.title}</Button>
               </Row>
               <Row>
                 <div className='m-2'>
@@ -145,19 +153,28 @@ const EditBlogPost = () => {
               <Button
                 className="position-absolute top-0 end-0 mt-3 me-3"
                 variant="primary"
-                onClick={() => {
-                  // Your button click handler logic here
-                  console.log("Need Pop-up to Confirm Delete");
-                  console.log("Complete Delete");
-                }}
+                onClick={handleDeleteModalShow}
               >
                 Delete
               </Button>
               </div>
             </Container>
-            <Modal show={showModal} onHide={handleClose}>
+
+            <Modal show={showDeleteTitleModal} onHide={handleDeleteModalClose}>
+              <Modal.Header closeButton>Delete Blog Post</Modal.Header>
+              <Modal.Body>
+                <Button variant="secondary" onClick={handleDeleteModalClose} className='m-2'>
+                  Cancel
+                </Button>
+                <Button variant="primary" onClick={deletePost} className='m-2'>
+                  Delete Post
+                </Button>
+              </Modal.Body>
+            </Modal>
+
+            <Modal show={showEditTitleModal} onHide={handleTitleClose}>
               <Modal.Header closeButton>
-                <Modal.Title>My Modal</Modal.Title>
+                <Modal.Title>Edit Blog Post Title</Modal.Title>
               </Modal.Header>
               <Modal.Body>
                 <Form>
@@ -169,7 +186,7 @@ const EditBlogPost = () => {
                 </Form>
               </Modal.Body>
               <Modal.Footer>
-                <Button variant="secondary" onClick={handleClose}>
+                <Button variant="secondary" onClick={handleTitleClose}>
                   Close
                 </Button>
                 <Button variant="primary" disabled={disableTitleChange} onClick={saveTitleChanges}>
