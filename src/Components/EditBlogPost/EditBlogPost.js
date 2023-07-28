@@ -4,7 +4,7 @@ import 'quill/dist/quill.bubble.css'
 import ReactQuill from 'react-quill'
 import { Container, Button, Row, Col, Modal, Form } from 'react-bootstrap';
 import db, {auth} from '../../Firebase';
-import { doc, getDoc, setDoc} from 'firebase/firestore';
+import { deleteDoc, doc, getDoc, setDoc} from 'firebase/firestore';
 import { useLocation, useParams } from 'react-router-dom';
 import { onAuthStateChanged } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
@@ -85,8 +85,10 @@ const EditBlogPost = () => {
     }
 
     const deletePost = () => {
-      console.log("This needs to delete the post");
-      handleDeleteModalClose();
+      deleteDoc(doc(db, 'blogPost', id)).then(() => {
+        handleDeleteModalClose();
+        navigate('/blog');
+      });
     }
 
     const handleInputChange = (event) => {
