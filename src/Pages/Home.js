@@ -3,6 +3,7 @@ import React from 'react';
 import UnderConstruction from '../Components/UnderConstruction/UnderConstruction';
 import { Container, Carousel } from 'react-bootstrap';
 import './Pages.css';
+import SingleBlogPostAd from '../Components/SingleBlogPostAd/SingleBlogPostAd';
 
 const Home = () => {
     return (
@@ -11,9 +12,7 @@ const Home = () => {
                     <UnderConstruction/>
                 </Carousel.Item>
                 <Carousel.Item>
-                    <div>
-                        Second
-                    </div>
+                    <SingleBlogPostAd/>
                 </Carousel.Item>
             </Carousel>
     );
