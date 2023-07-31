@@ -12,7 +12,7 @@ const Home = () => {
                     <UnderConstruction/>
                 </Carousel.Item>
                 <Carousel.Item>
-                    <SingleBlogPostAd/>
+                    <SingleBlogPostAd id='bRqMShD4Nn7v7zFlPZZA'/>
                 </Carousel.Item>
             </Carousel>
     );
