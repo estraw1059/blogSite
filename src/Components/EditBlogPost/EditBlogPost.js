@@ -47,7 +47,7 @@ const EditBlogPost = () => {
         if (param !== 'new') {
           getDocumentById();
         } else {
-          setBlogData({title: 'Untitled'})
+          setBlogData({title: 'Untitled', promoted: 'false', text: 'untitled text'})
           setEditTitleField('Untitled')
         }
         const adminListener = onAuthStateChanged(auth, (user) => {
