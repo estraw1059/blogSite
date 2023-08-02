@@ -15,6 +15,7 @@ const EditBlogPost = () => {
     const { id } = useParams();
     const [blogData, setBlogData] = useState([]);
     const [user, setUser] = useState(null);
+    const [promoted, setPromoted] = useState(false);
     const [showEditTitleModal, setShowEditTitleModal] = useState(false);
     const [showDeleteTitleModal, setShowDeleteTitleModal] = useState(false);
     const [editTitleField, setEditTitleField] = useState("");
@@ -36,6 +37,7 @@ const EditBlogPost = () => {
                 getDoc(docRef).then((doc) => {
                     setBlogData(doc.data());
                     setEditTitleField(doc.data().title);
+                    setPromoted(doc.data().promoted ? doc.data().promoted : false)
 
                 });
 
@@ -65,7 +67,8 @@ const EditBlogPost = () => {
       const docRef = doc(db, 'blogPost', id);
       const dataUpdate = {
         id,
-        'text': text
+        'text': text,
+        promoted
       }
       setDoc(docRef, dataUpdate, { merge: true }).then(() => {
         navigate(`/blog/${id}`)
