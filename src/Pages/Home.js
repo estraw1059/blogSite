@@ -1,11 +1,17 @@
 /* eslint-disable-next-line */
-import React from 'react';
+import React, {useState} from 'react';
 import UnderConstruction from '../Components/UnderConstruction/UnderConstruction';
-import { Container, Carousel } from 'react-bootstrap';
+import { Carousel } from 'react-bootstrap';
 import './Pages.css';
 import SingleBlogPostAd from '../Components/SingleBlogPostAd/SingleBlogPostAd';
+import { useEffect } from 'react';
 
 const Home = () => {
+    const [promotedPost, setPromotedPost] = useState([]);
+    useEffect(() => {
+        //TODO: Get All Promoted Post
+    }, []);
+
     return (
             <Carousel className='homePageCarousel'>
                 <Carousel.Item>
