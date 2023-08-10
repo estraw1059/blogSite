@@ -28,15 +28,18 @@ const Home = () => {
         getPromotedPost();
     }, []);
 
-    console.log(`${promotedPost[0].id}`);
     return (
             <Carousel className='homePageCarousel'>
                 <Carousel.Item>
                     <UnderConstruction/>
                 </Carousel.Item>
-                <Carousel.Item>
-                    <SingleBlogPostAd id='bRqMShD4Nn7v7zFlPZZA'/>
-                </Carousel.Item>
+                {promotedPost.map((post) => {
+                    console.log(post)
+                    return (                
+                    <Carousel.Item>
+                        <SingleBlogPostAd id={post.id}/>
+                    </Carousel.Item>)
+                })}
             </Carousel>
     );
 };
