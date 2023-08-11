@@ -27,7 +27,8 @@ const SingleBlogPostAd = (props) => {
     console.log(`Document Id found for ${blogData}`)
     return (
         <div>
-            An Ad will go here
+            <h3>{blogData.id}</h3>
+            <h2>{blogData.title}</h2>
         </div>
     );
 };
