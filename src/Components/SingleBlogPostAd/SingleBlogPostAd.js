@@ -1,5 +1,6 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
+import { Card } from 'react-bootstrap';
 import db from '../../Firebase';
 import { doc, getDoc} from 'firebase/firestore';
 
@@ -8,6 +9,11 @@ import { doc, getDoc} from 'firebase/firestore';
 const SingleBlogPostAd = (props) => {
 
     const [blogData, setBlogData] = useState([]);
+
+
+    const handleClick = () => {
+        console.log('Clicked Item')
+    }
 
     useEffect(() => {
         const getDocumentById = async () => {
@@ -26,7 +32,7 @@ const SingleBlogPostAd = (props) => {
     }, []);
     console.log(`Document Id found for ${blogData}`)
     return (
-        <div>
+        <div style={{ height: '100%' }} onClick={handleClick}>
             <h3>{blogData.id}</h3>
             <h2>{blogData.title}</h2>
         </div>

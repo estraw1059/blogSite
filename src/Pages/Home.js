@@ -29,18 +29,20 @@ const Home = () => {
     }, []);
 
     return (
-            <Carousel className='homePageCarousel'>
-                <Carousel.Item>
-                    <UnderConstruction/>
-                </Carousel.Item>
-                {promotedPost.map((post) => {
-                    console.log(post)
-                    return (                
-                    <Carousel.Item>
-                        <SingleBlogPostAd id={post.id}/>
-                    </Carousel.Item>)
-                })}
-            </Carousel>
+            <div className='carousel-container'>
+                <Carousel className='carousel-container'>
+                    <Carousel.Item className='carousel-item-container'>
+                        <UnderConstruction/>
+                    </Carousel.Item>
+                    {promotedPost.map((post) => {
+                        console.log(post)
+                        return (                
+                        <Carousel.Item className='carousel-item-container'>
+                            <SingleBlogPostAd id={post.id}/>
+                        </Carousel.Item>)
+                    })}
+                </Carousel>
+            </div>
     );
 };
 

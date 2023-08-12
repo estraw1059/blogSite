@@ -19,4 +19,14 @@
     justify-content: center;
     height: 100%;
     background-color: #f2f2f2;
-  }
+}
+
+.carousel-container {
+    width: 100%; /* Ensure full width of parent container */
+    height: 100%; /* Ensure full height of parent container */
+}
+
+.carousel-item-container {
+    height: 100%;
+    width: 100%;
+}
