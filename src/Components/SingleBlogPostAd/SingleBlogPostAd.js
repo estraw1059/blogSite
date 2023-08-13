@@ -3,16 +3,18 @@ import { useEffect, useState } from 'react';
 import { Card } from 'react-bootstrap';
 import db from '../../Firebase';
 import { doc, getDoc} from 'firebase/firestore';
+import { useNavigate } from 'react-router-dom';
 
 //Props will pass in id which is the id of the add.
 // The home page will find the promoted adds and create multiple ads for it. 
 const SingleBlogPostAd = (props) => {
 
     const [blogData, setBlogData] = useState([]);
+    const navigate = useNavigate();
 
 
-    const handleClick = () => {
-        console.log('Clicked Item')
+    const handleClick = (id) => {
+        navigate(`/blog/${id}`);
     }
 
     useEffect(() => {
@@ -30,9 +32,9 @@ const SingleBlogPostAd = (props) => {
         }
         getDocumentById();
     }, []);
-    console.log(`Document Id found for ${blogData}`)
+
     return (
-        <div style={{ height: '100%' }} onClick={handleClick}>
+        <div style={{ height: '100%' }} onClick={() => handleClick(blogData.id)}>
             <h3>{blogData.id}</h3>
             <h2>{blogData.title}</h2>
         </div>
