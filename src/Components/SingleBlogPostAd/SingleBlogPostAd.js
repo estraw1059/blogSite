@@ -4,6 +4,7 @@ import { Card } from 'react-bootstrap';
 import db from '../../Firebase';
 import { doc, getDoc} from 'firebase/firestore';
 import { useNavigate } from 'react-router-dom';
+import './SingleBlogPostAd.css';
 
 //Props will pass in id which is the id of the add.
 // The home page will find the promoted adds and create multiple ads for it. 
@@ -34,7 +35,7 @@ const SingleBlogPostAd = (props) => {
     }, []);
 
     return (
-        <div style={{ height: '100%' }} onClick={() => handleClick(blogData.id)}>
+        <div className='ad' onClick={() => handleClick(blogData.id)}>
             <h3>{blogData.id}</h3>
             <h2>{blogData.title}</h2>
         </div>

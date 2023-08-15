@@ -30,7 +30,7 @@ const Home = () => {
 
     return (
             <div className='carousel-container'>
-                <Carousel className='carousel-container'>
+                <Carousel variant='dark' className='carousel-container'>
                     <Carousel.Item className='carousel-item-container'>
                         <UnderConstruction/>
                     </Carousel.Item>
