@@ -36,7 +36,6 @@ const SingleBlogPostAd = (props) => {
 
     return (
         <div className='ad' onClick={() => handleClick(blogData.id)}>
-            <h3>{blogData.id}</h3>
             <h2>{blogData.title}</h2>
         </div>
     );
