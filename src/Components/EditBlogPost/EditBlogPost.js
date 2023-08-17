@@ -2,7 +2,7 @@ import React,  {useState, useEffect, useRef} from 'react';
 import 'quill/dist/quill.snow.css'
 import 'quill/dist/quill.bubble.css'
 import ReactQuill from 'react-quill'
-import { Container, Button, Row, ToggleButton, Modal, Form, ButtonGroup, Col } from 'react-bootstrap';
+import { Container, Button, Row, ToggleButton, Modal, Form, Col } from 'react-bootstrap';
 import db, {auth} from '../../Firebase';
 import { deleteDoc, doc, getDoc, setDoc} from 'firebase/firestore';
 import { useLocation, useParams } from 'react-router-dom';
@@ -62,7 +62,6 @@ const EditBlogPost = () => {
         }, [id, param]);
 
     const handlePromotedChange = () => {
-      console.log(`Setting Promoted to ${!promoted}`);
       setPromoted(!promoted)
     }    
     const saveTextChanges = () => {

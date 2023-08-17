@@ -35,7 +35,6 @@ const Home = () => {
                         <UnderConstruction/>
                     </Carousel.Item>
                     {promotedPost.map((post) => {
-                        console.log(post)
                         return (                
                         <Carousel.Item className='carousel-item-container'>
                             <SingleBlogPostAd id={post.id}/>
