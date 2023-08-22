@@ -38,7 +38,7 @@ const SideBar = () => {
 
 
     return (
-        <>
+        <div>
             {sideBarCards.map((post, index) => {
                 return (
                     <Card onClick={() => switchPost(post.id)} key={index}>
@@ -49,7 +49,7 @@ const SideBar = () => {
                     </Card>
                 );
             })}
-        </>
+        </div>
     );
 };
 
