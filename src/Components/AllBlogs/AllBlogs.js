@@ -59,7 +59,9 @@ const AllBlogs = () => {
                     </Col>
                 </Row>) : <></>
             }
-            {blogPost.map(blog => <Row><BlogCard blog={blog}/></Row>)}
+            <Row className='mb-3'>
+            {blogPost.map(blog => <Col className='mb-3' md={4}><BlogCard blog={blog}/></Col>)}
+            </Row>
         </Container>
     );
 };
