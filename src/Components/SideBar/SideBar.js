@@ -44,7 +44,7 @@ const SideBar = () => {
                     <Card onClick={() => switchPost(post.id)} key={index}>
                         <Card.Body>
                             <h5>{post.title}</h5>
-                            <p>{post.text}</p>
+                            <p style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', maxHeight: '3.6em', lineHeight: '1.2em' }}>{post.text}</p>
                         </Card.Body>
                     </Card>
                 );
