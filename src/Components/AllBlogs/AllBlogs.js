@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import { Container, Row, Col, Button } from 'react-bootstrap';
+import { Container, Row, Col, Button, Spinner } from 'react-bootstrap';
 import BlogCard from '../BlogCard/BlogCard';
 import db, {auth} from '../../Firebase';
 import { collection, query, limit, getDocs} from 'firebase/firestore';
@@ -14,6 +14,7 @@ const { v4: uuidv4 } = require('uuid');
 const AllBlogs = () => {
     const [blogPost, setBlogPost] = useState([]);
     const [user, setUser] = useState(null);
+    const [loading, setLoading] = useState(true);
     const navigate = useNavigate();
     useEffect(
         () => {
@@ -27,7 +28,7 @@ const AllBlogs = () => {
                         id: doc.id,
                         ...tempData
                     }
-                })));
+                })))
             }
             getBlogData();
             const adminListener = onAuthStateChanged(auth, (user) => {
@@ -39,7 +40,11 @@ const AllBlogs = () => {
         }, []);
     
     if (blogPost.length === 0) {
-        return <></>
+        return (
+            <Container>
+                <Spinner style={{margin: '25px'}}/>
+            </Container>
+        );
     }
 
     const newPostCreation = () => {

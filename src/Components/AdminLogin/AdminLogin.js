@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import {auth} from "../../Firebase";
 import { useNavigate } from 'react-router-dom';
 import { signInWithEmailAndPassword, signOut } from "firebase/auth";
-import { Button, Container, Row } from "react-bootstrap";
+import { Button, Container, Row, Spinner } from "react-bootstrap";
 
 const AdminLogin = () => {
     const [email, setEmail] = useState('');
@@ -42,7 +42,7 @@ const AdminLogin = () => {
         navigate('/admin/login')
       })
     }
-  
+
     if (auth.currentUser != null) {
       return (
         <Container>

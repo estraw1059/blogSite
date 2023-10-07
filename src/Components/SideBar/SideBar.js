@@ -18,7 +18,6 @@ const SideBar = () => {
 
     //Get 5 Most Recent post that aren't the current one
     useEffect(() => {
-        //, where("id","!=",id), limit(5), orderBy("id", "title")
         const getDocuments = async () => {
             try {
                 const q = query(collection(db, 'blogPost'), limit(5), where('id', '!=', id));
