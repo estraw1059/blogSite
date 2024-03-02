@@ -14,5 +14,9 @@
 }
 
 .tab .nav-link:hover {
-    color: black !important
+    color: black !important;
+}
+
+.tab .nav-item {
+    margin-bottom: 0px;
 }

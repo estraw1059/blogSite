@@ -2,10 +2,19 @@ import React from 'react';
 import { Card, Col, Button, Row } from 'react-bootstrap';
 import './ProjectCard.css';
 
-const ProjectCard = ({projectName, projectCodeLink, projectWebLink, projectDesc}) => {
+const ProjectCard = ({projectName, projectCodeLink, projectWebLink, projectDesc, setModal, setModalInfo}) => {
+    const activateModal = () => {
+        setModalInfo(
+            {
+                projectName,
+                projectDesc
+            }
+        );
+        setModal(true);
+    }
     return (
         <Col xs={12} lg={6} xl={4}> 
-            <Card className="projectCard">
+            <Card className="projectCard" onClick={() => activateModal()}>
                 <Card.Title>{projectName}</Card.Title>
                 <Card.Text className="projectDesc">{projectDesc}</Card.Text>
                 <Row>

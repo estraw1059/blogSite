@@ -13,9 +13,11 @@ const Job = ({company, title, dates, description, logo}) => {
                     <Card.Subtitle>{title}</Card.Subtitle>
                     <Card.Text>{dates}</Card.Text>
                     <Card.Text>
-                        {description.map((role, index) => (
-                            <li key={index}>{role}</li>
-                        ))}
+                        <ul>
+                            {description.map((role, index) => (
+                                <li key={index}>{role}</li>
+                            ))}
+                        </ul>
                     </Card.Text>
                 </Card.Body>
             </Card>
