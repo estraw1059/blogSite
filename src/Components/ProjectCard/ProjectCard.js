@@ -25,13 +25,13 @@ const ProjectCard = ({projectName, projectCodeLink, projectWebLink, projectDesc,
                             </Button>
                         </a>
                     </Col>
-                    <Col xs={6}>
+                    {projectWebLink && (<Col xs={6}>
                         <a href={projectWebLink} target="_blank">
                             <Button variant="dark" className="rounded-pill" style={{ width: '100%' }}>
                                 www
                             </Button>
                         </a>
-                    </Col>
+                    </Col>)}
                 </Row>
 
             </Card>
